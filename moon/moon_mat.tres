@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ej5ljh4es8xq"]
+
+[ext_resource type="Texture2D" uid="uid://6lc3kch4ee8s" path="res://moon/moon_noise.tres" id="1_xspiw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cdh0b"]
+
+[resource]
+normal_enabled = true
+normal_texture = ExtResource("1_xspiw")
+heightmap_texture = SubResource("NoiseTexture2D_cdh0b")

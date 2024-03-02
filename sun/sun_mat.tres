@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://x6an3eg3lq30"]
+
+[ext_resource type="Shader" path="res://sun/sun_shader.gdshader" id="1_nepjb"]
+[ext_resource type="Texture2D" uid="uid://rtncog3qhd12" path="res://sun/sun_noise_l1.tres" id="2_7wrt8"]
+[ext_resource type="Texture2D" uid="uid://bhy28i0h5jydg" path="res://sun/sun_noise_l2.tres" id="3_p74h1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nepjb")
+shader_parameter/noise_l1 = ExtResource("2_7wrt8")
+shader_parameter/noise_l2 = ExtResource("3_p74h1")
