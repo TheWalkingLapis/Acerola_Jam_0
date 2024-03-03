@@ -13,7 +13,8 @@ func _process(delta):
 	time += delta
 	position = 300.0 * Vector3(sin(sun_speed * time), 1, cos(sun_speed * time))
 	var look_at_pos = -position
-	look_at_pos.y = -10
+	#look_at_pos.y = -10
+	sunlight.position = position
 	sunlight.look_at(look_at_pos)
 	look_at(Vector3.ZERO)
 

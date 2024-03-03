@@ -6,5 +6,6 @@
 
 [resource]
 normal_enabled = true
+normal_scale = 2.0
 normal_texture = ExtResource("1_xspiw")
 heightmap_texture = SubResource("NoiseTexture2D_cdh0b")

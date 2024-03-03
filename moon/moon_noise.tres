@@ -5,8 +5,7 @@ fractal_octaves = 6
 fractal_lacunarity = 2.5
 
 [resource]
-width = 1024
-height = 1024
+width = 4096
+height = 4096
 as_normal_map = true
-bump_strength = 1.8
 noise = SubResource("FastNoiseLite_f6dp7")
