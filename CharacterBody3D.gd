@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 @export var movement_speed: float = 100.0
-@export var sprint_multiplier: float = 2.5
 @export var camera_sensitivity_x: float = 2.0
 @export var camera_sensitivity_y: float = 1.0
 
@@ -30,8 +29,6 @@ func _physics_process(delta):
 	if movement_vec != Vector3(0,velocity.y,0):
 		var movement: Vector3 = (transform.basis * movement_vec).normalized()
 		movement *= movement_speed * delta
-		if Input.is_action_pressed("sprint"):
-			movement *= sprint_multiplier
 		movement.y = velocity.y
 		velocity = movement
 	else:
