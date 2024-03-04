@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var pod_door = $"Pod/CollisionShape3D2"
+@onready var pod_door = $"Pod/Pod_Door"
 @export var pod_door_rotation_speed: float = 0.8
 var pod_door_closed: bool = true
 var pod_door_rotation: float = 0.0
