@@ -16,7 +16,7 @@ func _process(delta):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
-	var movement_vec = Vector3(0,velocity.y,0)
+	var movement_vec = Vector3(0,0,0)
 	if Input.is_action_pressed("move_forward"):
 		movement_vec += Vector3(0,0,-1)
 	if Input.is_action_pressed("move_backward"):
@@ -26,7 +26,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):
 		movement_vec += Vector3(-1,0,0)
 	
-	if movement_vec != Vector3(0,velocity.y,0):
+	if movement_vec != Vector3(0,0,0):
 		var movement: Vector3 = (transform.basis * movement_vec).normalized()
 		movement *= movement_speed * delta
 		movement.y = velocity.y
@@ -38,7 +38,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("jump"):
 			velocity.y += 5
 	else:
-		velocity.y -= 8 * delta
+		velocity.y -= 10 * delta
 	
 	move_and_slide()
 	
