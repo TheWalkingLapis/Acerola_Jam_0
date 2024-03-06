@@ -22,7 +22,7 @@ Levels:
 	(... ?)
 
 TODO:
-	Probs: Bed, Night Table, Lamp(s), Keycard reader, numpad, doors, buttons, kitchen(or books maybe), carpet, paper sheet/books (a.o. for lore)
-	Code: Pickup (certain) objects, open doors, level loader, destruction (chaos) shader, pod takeoff, inventory, menus
-	optional: Achievements for replayability
+	Probs: Bed, Night Table, Night Lamp(s), Keycard reader, numpad, doors, buttons, kitchen(or books maybe), carpet, paper sheet/books (a.o. for lore)
+	Code: open doors, level loader, destruction (chaos) shader, pod takeoff, inventory, menus
+	optional: Achievements for replayability/fun
 	

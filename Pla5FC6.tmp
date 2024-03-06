@@ -52,6 +52,8 @@ transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 
 collision_layer = 2
 script = ExtResource("1_32h26")
 movement_speed = 750.0
+camera_sensitivity_x = null
+camera_sensitivity_y = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_8gb15")
