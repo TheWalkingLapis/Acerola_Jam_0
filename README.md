@@ -15,14 +15,14 @@ Game: The Goal of every Level is to access and use the escape pod in a certain t
 		
 Levels: 
 	1: Explore Living quaters to find the keycard to open the pod-room and the code to launch the pod
-	2: Keycard no longer where it was, now ?
-	3: ?
-	4: ?
-	5: ?
+	2: Keycard is inaccessible in the safe, but now the pc is on. The password is written on a note/bock, and on the pc you can open the door
+	3: Find a note with morse code translation for escape code, listen to morse code given via speaker and search for keycard again.
+	4: Frames with images reveal a directional input, which can be used to open the safe containing the key card
+	5: Open door to go outside, there is a way to access the laboratory above which has a trapdoor to get back and the stabilizer + keycard.
 	(... ?)
 
 TODO:
-	Probs: Bed, Night Table, Night Lamp(s), Keycard reader, numpad, doors, buttons, kitchen(or books maybe), carpet, paper sheet/books (a.o. for lore)
-	Code: open doors, level loader, destruction (chaos) shader, pod takeoff, inventory, menus
+	Probs: Night Stand, Night Lamp(s), Keycard reader, numpad, buttons, paper sheet (a.o. for lore), PC
+	Code: level loader, pod takeoff, inventory (or only have pickup mechanic?), menus, level timer
 	optional: Achievements for replayability/fun
 	

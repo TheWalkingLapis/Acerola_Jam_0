@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://wachun1tgh6g"]
+
+[ext_resource type="Shader" path="res://destruction.gdshader" id="1_xr8t1"]
+[ext_resource type="Texture2D" uid="uid://b12qrgvqy3d5k" path="res://textures/choas_purple.png" id="2_xaogy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8dqd2"]
+noise_type = 3
+frequency = 0.8424
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qeumh"]
+noise = SubResource("FastNoiseLite_8dqd2")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xr8t1")
+shader_parameter/chaos_tex = ExtResource("2_xaogy")
+shader_parameter/noise = SubResource("NoiseTexture2D_qeumh")

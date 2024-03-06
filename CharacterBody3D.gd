@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 var picked_up_item: RigidBody3D = null
 var last_mouse_movement: Vector2
+var chaos_stage = 0.0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -17,6 +18,17 @@ func _process(delta):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+	if Input.is_action_just_pressed("TEST_chaos"):
+		chaos_stage += 0.1
+		var chaos_mat: ShaderMaterial = load("res://chaos_mat.tres")
+		var children = get_all_children($"../MoonBase")
+		for c in children:
+			if "material_override" in c and randf() <= chaos_stage:
+				c.material_override = chaos_mat
+	
+	if Input.is_action_just_pressed("TEST_reset_level"):
+		get_tree().change_scene_to_file("res://PlayerTest.tscn")
 
 func _physics_process(delta):
 	var movement_vec = Vector3(0,0,0)
@@ -46,7 +58,7 @@ func _physics_process(delta):
 	
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var space_state = get_world_3d().direct_space_state
-	var ray_length: float = 2.5
+	var ray_length: float = 3
 	
 	if picked_up_item == null:
 		if Input.is_action_just_pressed("pick_up_item"):
@@ -135,3 +147,10 @@ func _input(event):
 		cam.rotate(Vector3.RIGHT, -last_mouse_movement.y * camera_sensitivity_y)
 		# prevent upside-down camera movement
 		cam.rotation.x = clamp(cam.rotation.x, -0.45*PI, 0.45*PI)
+		
+func get_all_children(querry: Node) -> Array[Node]:
+	var res: Array[Node] = []
+	for c in querry.get_children():
+		res.append(c)
+		res.append_array(get_all_children(c))
+	return res
