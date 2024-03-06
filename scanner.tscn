@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6yun7q07dy4i"]
+
+[ext_resource type="Script" path="res://Scanner.gd" id="1_nxisw"]
+[ext_resource type="ArrayMesh" uid="uid://dqhcmew07xd0a" path="res://base/scanner.obj" id="2_k0j8r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1jj72"]
+size = Vector3(0.402252, 1.89328, 1.271)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrd3f"]
+size = Vector3(0.113968, 0.201904, 0.195801)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_if3ty"]
+size = Vector3(0.268341, 1.87781, 0.0962448)
+
+[node name="Scanner" type="Node3D"]
+script = ExtResource("1_nxisw")
+
+[node name="Scanner" type="StaticBody3D" parent="."]
+
+[node name="ScannerCollider" type="CollisionShape3D" parent="Scanner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00117493, -0.0707855, 0.0632324)
+shape = SubResource("BoxShape3D_1jj72")
+
+[node name="ScannerMesh" type="MeshInstance3D" parent="Scanner/ScannerCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00117493, 0.0707855, -0.0632324)
+mesh = ExtResource("2_k0j8r")
+skeleton = NodePath("../../..")
+
+[node name="Areas" type="Node3D" parent="."]
+
+[node name="One" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, 0.0372314, 0.398682)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/One"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Two" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, 0.0372314, 0.146127)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Two"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Three" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, 0.0372314, -0.109036)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Three"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Four" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, -0.188631, 0.398682)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Four"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Five" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.189, 0.146)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Five"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Six" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.189, -0.109)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Six"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Seven" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, -0.425979, 0.398682)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Seven"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Eight" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.426, 0.146)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Eight"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Nine" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.426, -0.109)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Nine"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Cancel" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, -0.681665, 0.398682)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Cancel"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Zero" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.682, 0.146)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Zero"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Ok" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.682, -0.109)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Ok"]
+shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="CardSlot" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.419964)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/CardSlot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0895233, -0.0708618, -0.00407791)
+shape = SubResource("BoxShape3D_if3ty")

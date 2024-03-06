@@ -6,6 +6,8 @@ extends CharacterBody3D
 
 @onready var cam: Camera3D = $Camera3D
 
+@export var pick_up_ray_length = 3.0
+@export var interaction_ray_length = 2.5
 var picked_up_item: RigidBody3D = null
 var last_mouse_movement: Vector2
 var chaos_stage = 0.0
@@ -56,15 +58,27 @@ func _physics_process(delta):
 		velocity.y -= 10 * delta
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("sneak"):
+		scale *= 0.5
+		movement_speed *= 0.5
+		position -= Vector3(0,1.0,0)
+		if picked_up_item != null:
+			picked_up_item.position -= Vector3(0,1.0,0)
+	if Input.is_action_just_released("sneak"):
+		scale *= 2.0
+		movement_speed *= 2.0
+		position += Vector3(0,1.0,0)
+		if picked_up_item != null:
+			picked_up_item.position += Vector3(0,1.0,0)
+	
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var space_state = get_world_3d().direct_space_state
-	var ray_length: float = 3
 	
 	if picked_up_item == null:
 		if Input.is_action_just_pressed("pick_up_item"):
 			# Raycast and find item to pick up
 			var from = cam.project_ray_origin(mouse_pos)
-			var to = from + cam.project_ray_normal(mouse_pos) * ray_length
+			var to = from + cam.project_ray_normal(mouse_pos) * pick_up_ray_length
 			var query = PhysicsRayQueryParameters3D.create(from, to)
 			var result = space_state.intersect_ray(query)
 			if not result.is_empty():
@@ -132,7 +146,20 @@ func _physics_process(delta):
 		
 	last_mouse_movement = Vector2(0,0)
 	
-	
+	if Input.is_action_just_pressed("interact") and picked_up_item == null:
+		# Raycast to find object to interact
+			var from = cam.project_ray_origin(mouse_pos)
+			var to = from + cam.project_ray_normal(mouse_pos) * interaction_ray_length
+			var query = PhysicsRayQueryParameters3D.create(from, to)
+			query.set_collide_with_areas(true)
+			var result = space_state.intersect_ray(query)
+			if not result.is_empty():
+				if result["collider"] is Area3D:
+					var area: Area3D = result["collider"]
+					if area.is_in_group("Scanner_Buttons"):
+						var scanner = area.get_parent().get_parent()
+						if scanner.has_method("activate_area"):
+							scanner.activate_area(area)
 # handle camera movement
 func _input(event):
 	# if mouse is not captured don't change camera
