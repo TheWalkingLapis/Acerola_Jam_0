@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6yun7q07dy4i"]
+[gd_scene load_steps=7 format=3 uid="uid://b6yun7q07dy4i"]
 
-[ext_resource type="Script" path="res://Scanner.gd" id="1_nxisw"]
+[ext_resource type="Script" path="res://scripts/Scanner.gd" id="1_nxisw"]
 [ext_resource type="ArrayMesh" uid="uid://dqhcmew07xd0a" path="res://base/scanner.obj" id="2_k0j8r"]
+[ext_resource type="FontFile" uid="uid://bgjxfvfll7osp" path="res://fonts/Digital7/Digital7Monoitalic-8MDLJ.ttf" id="3_geohv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1jj72"]
 size = Vector3(0.402252, 1.89328, 1.271)
@@ -10,7 +11,7 @@ size = Vector3(0.402252, 1.89328, 1.271)
 size = Vector3(0.113968, 0.201904, 0.195801)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_if3ty"]
-size = Vector3(0.268341, 1.87781, 0.0962448)
+size = Vector3(0.268341, 1.87781, 0.127597)
 
 [node name="Scanner" type="Node3D"]
 script = ExtResource("1_nxisw")
@@ -26,6 +27,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00117493, 0.0707855, -0.06
 mesh = ExtResource("2_k0j8r")
 skeleton = NodePath("../../..")
 
+[node name="Display" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.210181, 0.530996, 0.13773)
+texture_filter = 2
+text = "1337"
+font = ExtResource("3_geohv")
+font_size = 60
+outline_size = 10
+
 [node name="Areas" type="Node3D" parent="."]
 
 [node name="One" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
@@ -34,11 +43,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, 0.0372314, 0.398682
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/One"]
 shape = SubResource("BoxShape3D_mrd3f")
 
+[node name="Label3D" type="Label3D" parent="Areas/One"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "1"
+font_size = 25
+outline_size = 5
+
 [node name="Two" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, 0.0372314, 0.146127)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Two"]
 shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Label3D" type="Label3D" parent="Areas/Two"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "2"
+font_size = 25
+outline_size = 5
 
 [node name="Three" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, 0.0372314, -0.109036)
@@ -46,11 +69,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, 0.0372314, -0.10903
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Three"]
 shape = SubResource("BoxShape3D_mrd3f")
 
+[node name="Label3D" type="Label3D" parent="Areas/Three"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "3"
+font_size = 25
+outline_size = 5
+
 [node name="Four" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, -0.188631, 0.398682)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Four"]
 shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Label3D" type="Label3D" parent="Areas/Four"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "4"
+font_size = 25
+outline_size = 5
 
 [node name="Five" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.189, 0.146)
@@ -58,11 +95,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.189, 0.146)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Five"]
 shape = SubResource("BoxShape3D_mrd3f")
 
+[node name="Label3D" type="Label3D" parent="Areas/Five"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "5"
+font_size = 25
+outline_size = 5
+
 [node name="Six" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.189, -0.109)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Six"]
 shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Label3D" type="Label3D" parent="Areas/Six"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "6"
+font_size = 25
+outline_size = 5
 
 [node name="Seven" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, -0.425979, 0.398682)
@@ -70,11 +121,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, -0.425979, 0.398682
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Seven"]
 shape = SubResource("BoxShape3D_mrd3f")
 
+[node name="Label3D" type="Label3D" parent="Areas/Seven"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "7"
+font_size = 25
+outline_size = 5
+
 [node name="Eight" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.426, 0.146)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Eight"]
 shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Label3D" type="Label3D" parent="Areas/Eight"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "8"
+font_size = 25
+outline_size = 5
 
 [node name="Nine" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.426, -0.109)
@@ -82,11 +147,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.426, -0.109)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Nine"]
 shape = SubResource("BoxShape3D_mrd3f")
 
+[node name="Label3D" type="Label3D" parent="Areas/Nine"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "9"
+font_size = 25
+outline_size = 5
+
 [node name="Cancel" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170967, -0.681665, 0.398682)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Cancel"]
 shape = SubResource("BoxShape3D_mrd3f")
+
+[node name="Label3D" type="Label3D" parent="Areas/Cancel"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "X"
+font_size = 25
+outline_size = 5
 
 [node name="Zero" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.682, 0.146)
@@ -94,15 +173,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.682, 0.146)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Zero"]
 shape = SubResource("BoxShape3D_mrd3f")
 
+[node name="Label3D" type="Label3D" parent="Areas/Zero"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "0"
+font_size = 25
+outline_size = 5
+
 [node name="Ok" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171, -0.682, -0.109)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Ok"]
 shape = SubResource("BoxShape3D_mrd3f")
 
+[node name="Label3D" type="Label3D" parent="Areas/Ok"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0575051, 0, 0)
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+text = "ok"
+font_size = 25
+outline_size = 5
+
 [node name="CardSlot" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.419964)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/CardSlot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0895233, -0.0708618, -0.00407791)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0895233, -0.0708618, -0.00319982)
 shape = SubResource("BoxShape3D_if3ty")

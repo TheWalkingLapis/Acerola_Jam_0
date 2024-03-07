@@ -22,7 +22,10 @@ Levels:
 	(... ?)
 
 TODO:
-	Probs: Night Stand, Night Lamp(s), Keycard reader, numpad, buttons, paper sheet (a.o. for lore), PC
-	Code: level loader, pod takeoff, inventory (or only have pickup mechanic?), menus, level timer
+	Game Name (idea): (Surive/Escape/...?) Project Aleph ? (As in Aleph_zero, the cardinality of the smallest infinite set)
+	Play Testing: Have first level complete, have main menu (at least start button), 
+	
+	Probs: Night Stand, Night Lamp(s), buttons, paper sheet (a.o. for lore)
+	Code: pod takeoff, inventory (or only have pickup mechanic?), menus, level timer
 	optional: Achievements for replayability/fun
 	

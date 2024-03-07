@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 @export var pick_up_ray_length = 3.0
 @export var interaction_ray_length = 2.5
+var sneaking: bool = false
 var picked_up_item: RigidBody3D = null
 var last_mouse_movement: Vector2
 var chaos_stage = 0.0
@@ -28,9 +29,6 @@ func _process(delta):
 		for c in children:
 			if "material_override" in c and randf() <= chaos_stage:
 				c.material_override = chaos_mat
-	
-	if Input.is_action_just_pressed("TEST_reset_level"):
-		get_tree().change_scene_to_file("res://PlayerTest.tscn")
 
 func _physics_process(delta):
 	var movement_vec = Vector3(0,0,0)
@@ -52,24 +50,29 @@ func _physics_process(delta):
 		velocity = Vector3(0,velocity.y,0)
 	
 	if is_on_floor():
-		if Input.is_action_pressed("jump"):
+		if not sneaking and Input.is_action_pressed("jump"):
 			velocity.y += 5
 	else:
 		velocity.y -= 10 * delta
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("sneak"):
+	var cam_item_diff = Vector3(0,0,0)
+	if picked_up_item != null:
+		cam_item_diff = picked_up_item.global_position - cam.global_position
+	if Input.is_action_just_pressed("sneak") and is_on_floor():
 		scale *= 0.5
 		movement_speed *= 0.5
 		position -= Vector3(0,1.0,0)
 		if picked_up_item != null:
-			picked_up_item.position -= Vector3(0,1.0,0)
-	if Input.is_action_just_released("sneak"):
+			picked_up_item.global_position = cam.global_position + cam_item_diff
+		sneaking = true
+	if Input.is_action_just_released("sneak") and sneaking:
 		scale *= 2.0
 		movement_speed *= 2.0
 		position += Vector3(0,1.0,0)
 		if picked_up_item != null:
-			picked_up_item.position += Vector3(0,1.0,0)
+			picked_up_item.global_position = cam.global_position + cam_item_diff
+		sneaking = false
 	
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var space_state = get_world_3d().direct_space_state

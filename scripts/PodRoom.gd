@@ -46,3 +46,10 @@ func _process(delta):
 		elif pod_door.get_rotation().y >= PI/2:
 			pod_door.set_rotation(Vector3(0,PI/2,0))
 			pod_door_rotation = 0.0
+
+func open_living_room_door(opening: bool):
+	if not (door_closed == opening):
+		return
+	door_offset = 1.0 if door_closed else -1.0
+	door_offset *= door_opening_speed
+	door_closed = not door_closed

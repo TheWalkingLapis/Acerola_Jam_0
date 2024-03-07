@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://tg04yfatjvg7"]
+
+[ext_resource type="Script" path="res://scenes/control.gd" id="1_ghike"]
+[ext_resource type="PackedScene" uid="uid://cpbamg25vdbgp" path="res://scenes/environment.tscn" id="1_yy8ec"]
+[ext_resource type="PackedScene" uid="uid://bwo53y2aeckss" path="res://scenes/moon_base.tscn" id="2_tu6u8"]
+[ext_resource type="PackedScene" uid="uid://drgruuvdcclum" path="res://scenes/main_menu.tscn" id="3_3t2nn"]
+[ext_resource type="PackedScene" uid="uid://bjvtxhrgqehf0" path="res://scenes/player.tscn" id="4_4nol8"]
+
+[node name="Control" type="Node3D"]
+script = ExtResource("1_ghike")
+levels = Array[PackedScene]([ExtResource("2_tu6u8")])
+
+[node name="Player" parent="." instance=ExtResource("4_4nol8")]
+transform = Transform3D(-1.75, 0, -1.5299e-07, 0, 1.75, 0, 1.5299e-07, 0, -1.75, 3.77393, 2.50424, -4.65762)
+
+[node name="Environment" parent="." instance=ExtResource("1_yy8ec")]
+
+[node name="Main_Menu" parent="." instance=ExtResource("3_3t2nn")]

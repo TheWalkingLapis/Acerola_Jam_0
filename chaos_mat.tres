@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://wachun1tgh6g"]
 
-[ext_resource type="Shader" path="res://destruction.gdshader" id="1_xr8t1"]
+[ext_resource type="Shader" path="res://shader/destruction.gdshader" id="1_xr8t1"]
 [ext_resource type="Texture2D" uid="uid://b12qrgvqy3d5k" path="res://textures/choas_purple.png" id="2_xaogy"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8dqd2"]
