@@ -22,10 +22,10 @@ Levels:
 	(... ?)
 
 TODO:
-	Game Name (idea): (Surive/Escape/...?) Project Aleph ? (As in Aleph_zero, the cardinality of the smallest infinite set)
-	Play Testing: Have first level complete, have main menu (at least start button), 
+	Play Testing: Explain Controlls, Add Loose Button for testing, add exe to git, move this content to TODO.txt and update README,
+					Write Instructions for feedback
 	
-	Probs: Night Stand, Night Lamp(s), buttons, paper sheet (a.o. for lore)
+	Probs: Night Lamp(s), paper sheet (a.o. for lore)
 	Code: pod takeoff, inventory (or only have pickup mechanic?), menus, level timer
 	optional: Achievements for replayability/fun
 	

@@ -14,7 +14,7 @@ var last_mouse_movement: Vector2
 var chaos_stage = 0.0
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 
 func _process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
@@ -160,6 +160,14 @@ func _physics_process(delta):
 				if result["collider"] is Area3D:
 					var area: Area3D = result["collider"]
 					if area.is_in_group("Scanner_Buttons"):
+						var scanner = area.get_parent().get_parent()
+						if scanner.has_method("activate_area"):
+							scanner.activate_area(area)
+					if area.is_in_group("Buttons"):
+						var button = area.get_parent()
+						if button.has_method("activate_area"):
+							button.activate_area(area)
+					if area.is_in_group("Directional_Input_Buttons"):
 						var scanner = area.get_parent().get_parent()
 						if scanner.has_method("activate_area"):
 							scanner.activate_area(area)

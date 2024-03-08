@@ -18,18 +18,17 @@ extends Node3D
 #var areas: Array[Area3D]
 var dict: Dictionary
 
+var keycard_node: RigidBody3D
 var open_func: Callable
-var card_mode: bool
+@export var card_mode: bool = false
 var opened: bool
-var password: Array[int]
+@export var password: Array[int] = [1,2,3,4]
 var current_attempt: Array[int]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	card_mode = true
 	opened = false
 	current_attempt = [-1, -1, -1, -1]
-	password = [1, 2, 3, 4]
 	#areas = [area_1, area_2, area_3, area_4, area_5 , area_6, area_7, area_8, area_9, area_ok, area_0, area_cancel, area_card]
 	dict = {area_1: 1, area_2: 2, area_3: 3, area_4: 4, area_5: 5, area_6: 6, area_7: 7, area_7: 7, area_8: 8, area_9: 9, area_0: 0, area_ok: -1, area_cancel: -2, area_card: -3}
 	if card_mode:
@@ -44,6 +43,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func set_keycard(card: RigidBody3D):
+	keycard_node = card
+
 func activate_area(area: Area3D):
 	if not dict.has(area):
 		printerr("Error! Scanner has been called with a false Area3D!")
@@ -55,7 +57,7 @@ func activate_area(area: Area3D):
 	
 	if card_mode:
 		if value == -3: # only accept inputs to card slot
-			if true: # TODO check if player has keycard
+			if false: # TODO check if player has keycard
 				opened = true
 				display_label.text = "OPEN"
 				open_func.call(true)
@@ -69,7 +71,7 @@ func activate_area(area: Area3D):
 		if current_attempt == password:
 			opened = true
 			display_label.text = "OPEN"
-			open_func.call(true)
+			open_func.call(true, false)
 			return
 		current_attempt = [-1, -1, -1, -1]
 	else: # insert value
@@ -90,3 +92,13 @@ func activate_area(area: Area3D):
 
 func attach_to_door(f: Callable):
 	open_func = f
+
+
+func _on_card_slot_body_entered(body):
+	if opened:
+		return
+	if body == keycard_node:
+		opened = true
+		display_label.text = "OPEN"
+		open_func.call(true, false)
+		return

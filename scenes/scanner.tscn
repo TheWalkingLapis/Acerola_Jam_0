@@ -195,7 +195,10 @@ outline_size = 5
 
 [node name="CardSlot" type="Area3D" parent="Areas" groups=["Scanner_Buttons"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.419964)
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/CardSlot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0895233, -0.0708618, -0.00319982)
 shape = SubResource("BoxShape3D_if3ty")
+
+[connection signal="body_entered" from="Areas/CardSlot" to="." method="_on_card_slot_body_entered"]

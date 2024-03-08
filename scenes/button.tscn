@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8hc76ke781f3"]
+
+[ext_resource type="ArrayMesh" uid="uid://bq485omwchfba" path="res://base/button.obj" id="1_sqgaj"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="1_xi0pr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eo4ee"]
+size = Vector3(0.977966, 0.13205, 0.981079)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4tenf"]
+size = Vector3(0.531494, 0.149048, 0.555786)
+
+[node name="Button" type="Node3D"]
+script = ExtResource("1_xi0pr")
+
+[node name="ButtonCase" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonCase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000152588, 0.00221252, 0.00128174)
+shape = SubResource("BoxShape3D_eo4ee")
+
+[node name="Button" type="MeshInstance3D" parent="ButtonCase/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000152588, -0.00221252, -0.00128174)
+mesh = ExtResource("1_sqgaj")
+skeleton = NodePath("../../..")
+
+[node name="Actual_Button" type="Area3D" parent="." groups=["Buttons"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Actual_Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045166, 0.132019, -0.00457764)
+shape = SubResource("BoxShape3D_4tenf")

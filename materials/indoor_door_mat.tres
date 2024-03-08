@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://o4v45c6b15r6"]
+
+[ext_resource type="Shader" path="res://shader/indoor_door_mat.gdshader" id="1_6c3aj"]
+[ext_resource type="Texture2D" uid="uid://c0xacqyi4q7f3" path="res://textures/aleph_symbol.png" id="2_mwwrc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6c3aj")
+shader_parameter/base_col = Color(0, 0, 0, 1)
+shader_parameter/aleph = ExtResource("2_mwwrc")

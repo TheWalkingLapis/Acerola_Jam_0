@@ -14,6 +14,7 @@ script = ExtResource("1_p4g2b")
 movement_speed = 750.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_8gb15")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

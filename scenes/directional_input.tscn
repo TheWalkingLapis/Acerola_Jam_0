@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1q8rrffc3ui"]
+
+[ext_resource type="Script" path="res://scripts/directional_input.gd" id="1_s0670"]
+[ext_resource type="ArrayMesh" uid="uid://460fr01vb1gp" path="res://base/directional_input.obj" id="1_y6umi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1sw6q"]
+size = Vector3(0.589966, 2.1377, 2.16388)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqnq1"]
+albedo_color = Color(0.372549, 0.372549, 0.372549, 1)
+metallic = 0.41
+roughness = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdfi5"]
+size = Vector3(0.254921, 0.416748, 0.408546)
+
+[node name="Directional_Input" type="Node3D"]
+script = ExtResource("1_s0670")
+
+[node name="Case" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Case"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0195923, 0.0327148, -0.0261536)
+shape = SubResource("BoxShape3D_1sw6q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Case/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0195923, -0.0327148, 0.0261536)
+mesh = ExtResource("1_y6umi")
+skeleton = NodePath("../..")
+surface_material_override/1 = SubResource("StandardMaterial3D_hqnq1")
+
+[node name="Areas" type="Node3D" parent="."]
+
+[node name="Up" type="Area3D" parent="Areas" groups=["Directional_Input_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27229, 0.467207, -0.0320791)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301933, 0.00476074, 0.00824359)
+shape = SubResource("BoxShape3D_jdfi5")
+
+[node name="Label3D" type="Label3D" parent="Areas/Up"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.076215, 0, 0.00700808)
+text = ">
+"
+font_size = 50
+
+[node name="Down" type="Area3D" parent="Areas" groups=["Directional_Input_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27229, -0.436337, -0.0320791)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Down"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301933, 0.00476074, 0.00824359)
+shape = SubResource("BoxShape3D_jdfi5")
+
+[node name="Label3D" type="Label3D" parent="Areas/Down"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.076215, 0, -0.00525379)
+text = ">
+"
+font_size = 50
+
+[node name="Left" type="Area3D" parent="Areas" groups=["Directional_Input_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27229, 0.0238516, 0.420811)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301933, 0.00476074, 0.00824359)
+shape = SubResource("BoxShape3D_jdfi5")
+
+[node name="Label3D" type="Label3D" parent="Areas/Left"]
+transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0.076, -0.00830865, 0)
+text = ">
+"
+font_size = 50
+
+[node name="Right" type="Area3D" parent="Areas" groups=["Directional_Input_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27229, 0.0238516, -0.480202)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301933, 0.00476074, 0.00824359)
+shape = SubResource("BoxShape3D_jdfi5")
+
+[node name="Label3D" type="Label3D" parent="Areas/Right"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.076, 0.0124001, 0)
+text = ">
+"
+font_size = 50
+
+[node name="Reset" type="Area3D" parent="Areas" groups=["Directional_Input_Buttons"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27229, 0.019201, -0.0320791)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Reset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0301933, 0.00476074, 0.00824359)
+shape = SubResource("BoxShape3D_jdfi5")
+
+[node name="Label3D" type="Label3D" parent="Areas/Reset"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.076215, 0.0066978, 0.00254285)
+text = "Reset
+"
+font_size = 20
