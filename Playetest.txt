@@ -10,7 +10,7 @@ Info fürs Testen:
 	
 Ziel des Spiels:
 	Das Spiel soll ein Puzzle-Game werden, im Testlevel müssen auch Rätseln gelöst werden.
-	Ziel ist es, mit dem Escape Pod zu entkommen. Falls das nicht reicht um zuwissen was zu tun ist, ist das auch schon wertvolles Feedback.
+	Ziel ist es, mit dem Escape Pod zu entkommen. Falls das nicht reicht um zu wissen was zu tun ist, ist das auch schon wertvolles Feedback.
 
 Controlls:
 	W,A,S,D: Bewegen
@@ -20,6 +20,7 @@ Controlls:
 	Q,E,Mausrad: Aufgehobene Gegenstände ansehen (rotieren)
 	Enter: Nach win/loose zurück ins Hauptmenü
 	R: Level reset (jederzeit)
+	Rechte Maustaste: gedrückt halten um Maus frei bewegen zu können (sonst ist der Mauszeiger in der Mitte gelockt)
 Debug-Controlls: (Sind zum Testen auch dabei, können benutzt werden falls etwas nicht funktioniert)
 	M: Türen öffen/schließen
 	N: Pod und Safe öffnen/schließen
