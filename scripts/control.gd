@@ -9,6 +9,11 @@ var current_level_idx: int = -1
 var in_main_menu: bool = true
 var game_over_test = false
 
+#TODO remove
+var chaos_stage = 0.0
+var start_chaos = false
+var chaos_time = 0.0
+
 func _ready():
 	assert(levels.size() > 0)
 	
@@ -26,8 +31,22 @@ func _process(delta):
 			$Main_Menu.visible = true
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			$TEST_win.visible = false
+			$TEST_loose.visible = false
 		return
-		
+	
+	#TODO remove
+	if start_chaos:
+		chaos_time += delta
+		if chaos_stage > 2.0:
+			game_over_test = true
+			get_node("Player").queue_free()
+			get_node("Environment").queue_free()
+			$TEST_loose.visible = true
+		if chaos_time > 1.0:
+			chaos_stage += 0.1
+			chaos_time -= 1.0
+			progress_chaos()
+	
 	if Input.is_action_just_pressed("TEST_reset_level"):
 		reload_current_level()
 
@@ -39,6 +58,11 @@ func reload_current_level():
 	
 	$Player.position = current_level.get_node("PlayerSpawn").position
 	$Player.rotation = current_level.get_node("PlayerSpawn").rotation
+	
+	#TODO remove
+	start_chaos = false
+	chaos_stage = 0.0
+	chaos_time = 0.0
 	
 func load_next_level():
 	# no more levels (trigger win here?)
@@ -75,8 +99,29 @@ func start_game():
 
 # called by moon base
 func pod_reached():
+	#TODO remove
+	if start_chaos:
+		return
 	game_over_test = true
 	get_node("Player").queue_free()
 	get_node("Environment").queue_free()
 	
 	$TEST_win.visible = true
+
+
+#TODO remove
+func test_loose():
+	start_chaos = true
+func progress_chaos():
+	chaos_stage += 0.1
+	var chaos_mat: ShaderMaterial = load("res://materials/chaos_mat.tres")
+	var children = get_all_children($Environment)
+	for c in children:
+		if "material_override" in c and randf() <= chaos_stage:
+			c.material_override = chaos_mat
+func get_all_children(querry: Node) -> Array[Node]:
+	var res: Array[Node] = []
+	for c in querry.get_children():
+		res.append(c)
+		res.append_array(get_all_children(c))
+	return res

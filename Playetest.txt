@@ -1,0 +1,26 @@
+Info fürs Testen:
+	
+	1. die .exe und der .pck order müssen im gleichen Verzeichnis sein. Wenn beide einfach in Download bleiben ist das zB. okay.
+	2. Wenn etwas vor oder während des Spiels nicht klappt (zB. startet nicht), gerne direkt bescheid sagen, dann versuche ich das zu fixen.
+	3. Steurerung ist unter dem Punkt 'Controlls' in dieser Datei erklärt. Ingame gibt es noch kein Menü dafür
+	4. Das Spiel ist WIP, also wenn etwas unvollständig wirkt, dann weil es das im leider noch ist. Gerne trotzdem Feeback zu allem geben :)
+	5. Bei Interesse ist in der TODO.txt (auf Github) auch grob Story und Spielkonzept erklärt. 
+		Da stehen allerdings auch alle Levelkonzepte drinnen die ich mir ausdenke, also Spoiler Gefahr an alle die das fertige Spiel spielen wollen ^^
+	6. Feedback gerne per Discord or WhatsApp, wenn ihr keine Lust habt nen Roman zu schreiben (verständlicherweise) auch gerne einfach ne Sprachnachricht machen oder so
+	
+Ziel des Spiels:
+	Das Spiel soll ein Puzzle-Game werden, im Testlevel müssen auch Rätseln gelöst werden.
+	Ziel ist es, mit dem Escape Pod zu entkommen. Falls das nicht reicht um zuwissen was zu tun ist, ist das auch schon wertvolles Feedback.
+
+Controlls:
+	W,A,S,D: Bewegen
+	Space: Springen
+	Shift: Sneaken
+	F: Interagieren (Knöpfe benutzen und leichte Gegenstände hochheben)
+	Q,E,Mausrad: Aufgehobene Gegenstände ansehen (rotieren)
+	Enter: Nach win/loose zurück ins Hauptmenü
+	R: Level reset (jederzeit)
+Debug-Controlls: (Sind zum Testen auch dabei, können benutzt werden falls etwas nicht funktioniert)
+	M: Türen öffen/schließen
+	N: Pod und Safe öffnen/schließen
+	B: Chaos aktivieren

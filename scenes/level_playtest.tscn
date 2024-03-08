@@ -61,7 +61,7 @@ data = PackedVector3Array(21.4929, -0.0451, -5.0051, 19.0385, -0.0451, -5.0051, 
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nv5tn"]
 albedo_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
-metallic = 0.8
+metallic = 0.66
 roughness = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ao6gj"]
@@ -350,7 +350,7 @@ shader_parameter/tex = ExtResource("52_62i8f")
 script = ExtResource("1_rqg77")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5075, 2.09371, 3.40212)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.5075, 2.09371, 3.40212)
 
 [node name="Outer_Wall" type="StaticBody3D" parent="."]
 collision_mask = 7
@@ -485,7 +485,6 @@ mesh = ExtResource("9_q685a")
 skeleton = NodePath("../../../../..")
 
 [node name="Pod_Door" type="CollisionShape3D" parent="Interior/PodRoom/Pod"]
-visible = false
 shape = SubResource("ConcavePolygonShape3D_2eb7u")
 
 [node name="PodDoor" type="MeshInstance3D" parent="Interior/PodRoom/Pod/Pod_Door"]
@@ -1513,5 +1512,30 @@ shape = SubResource("BoxShape3D_g0lb1")
 mesh = ExtResource("50_ap75n")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_ga7nv")
+
+[node name="Button" parent="." instance=ExtResource("39_kfwgm")]
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, -6.39917, 2.93048, -9.8)
+
+[node name="Label3D" type="Label3D" parent="Button"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0236359, -0.827341)
+text = "Press to Loose
+(loose condition is WIP)"
+font_size = 40
+
+[node name="Button2" parent="." instance=ExtResource("39_kfwgm")]
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, -4.96849, 2.93048, -9.8)
+
+[node name="Label3D" type="Label3D" parent="Button2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0236359, -0.827341)
+text = "Press to tp outside
+(one way ticket)"
+font_size = 40
+
+[node name="Outside_Port" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.407565, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Outside_Port"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30596, 0)
+omni_range = 15.422
 
 [connection signal="body_entered" from="Interior/PodRoom/Pod/Entered_Pod" to="Interior/PodRoom" method="_on_entered_pod_body_entered"]

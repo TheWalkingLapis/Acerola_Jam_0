@@ -18,6 +18,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("TEST_open_close_doors"):
+		open_living_room_door(true, true)
+	if Input.is_action_just_pressed("TEST_open_close_pod"):
+		open_pod_door(true, true)
 	
 	if door_offset != 0.0:
 		door.translate(Vector3.UP * door_offset * delta)
