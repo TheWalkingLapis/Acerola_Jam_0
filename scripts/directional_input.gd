@@ -7,6 +7,7 @@ extends Node3D
 @onready var area_reset: Area3D = $"Areas/Reset"
 
 var open_func: Callable
+var sound_func: Callable
 var opened: bool
 @export var password: String = "uuu"
 var current_attempt: String
@@ -26,6 +27,7 @@ func activate_area(area: Area3D):
 		current_attempt = password
 		for i in range(current_attempt.length()):
 			current_attempt[i] = "_"
+		sound_func.call()
 	else: # insert value
 		for i in range(current_attempt.length()):
 			if current_attempt[i] == "_":
@@ -43,6 +45,11 @@ func activate_area(area: Area3D):
 				break
 		if password == current_attempt:
 			open_func.call(true)
+			opened = true
+	sound_func.call()
 
 func attach_to_door(f: Callable):
 	open_func = f
+	
+func audio_func(f: Callable):
+	sound_func = f

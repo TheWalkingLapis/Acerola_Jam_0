@@ -25,15 +25,14 @@ func _ready():
 	# special treatment for tube wall
 	tube_and_wall_mesh_instance.set_surface_override_material(1, example_mat)
 	
-	#TODO remove
-	$Button.attach_to_door(TEST_loose)
-	$Button2.attach_to_door(TEST_tp)
+	$PC_Interface.visible = false
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+	
 func get_all_children(querry: Node) -> Array[Node]:
 	var res: Array[Node] = []
 	for c in querry.get_children():
@@ -41,13 +40,6 @@ func get_all_children(querry: Node) -> Array[Node]:
 		res.append_array(get_all_children(c))
 	return res
 
-
 # signal emited by pod
 func pod_reached():
 	get_parent().get_parent().pod_reached()
-
-#TODO remove
-func TEST_loose(x,y):
-	get_parent().get_parent().test_loose()
-func TEST_tp(x,y):
-	get_parent().get_parent().get_node("Player").position = $Outside_Port.position

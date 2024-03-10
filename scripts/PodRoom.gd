@@ -11,9 +11,14 @@ var door_offset: float = 0.0
 var pod_door_closed: bool = true
 var pod_door_rotation: float = 0.0
 
+# Control/Environement/MoonBase/Interior/LivingRoom
+# Control/Audio_Manager
+@onready var audio_manager = $"../../../../Audio_Manager"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pod_door_scanner.attach_to_door(open_pod_door)
+	pod_door_scanner.audio_func(audio_manager.play_button_press)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

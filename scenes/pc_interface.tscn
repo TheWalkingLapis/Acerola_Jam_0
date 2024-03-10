@@ -1,0 +1,205 @@
+[gd_scene load_steps=9 format=3 uid="uid://bisfjpxie2vr6"]
+
+[ext_resource type="Texture2D" uid="uid://y7hs2qr5y057" path="res://textures/screensaver.png" id="1_rcovy"]
+[ext_resource type="Script" path="res://scripts/pc_interface.gd" id="1_slsvl"]
+[ext_resource type="Texture2D" uid="uid://b0pdditktn5qs" path="res://textures/wallpaper_xp.png" id="2_p3lwv"]
+[ext_resource type="Script" path="res://scripts/PC_Desktop.gd" id="2_ww8ro"]
+[ext_resource type="Texture2D" uid="uid://dcf0vsa2kdvr3" path="res://textures/power_on_off_symbol.png" id="3_qs1g6"]
+[ext_resource type="Script" path="res://scripts/PC_login.gd" id="4_mq53p"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_pb12d"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_54q1e"]
+events = [SubResource("InputEventKey_pb12d")]
+
+[node name="PC_Interface" type="CanvasLayer"]
+script = ExtResource("1_slsvl")
+
+[node name="Desktop" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ww8ro")
+
+[node name="Wallpaper" type="TextureRect" parent="Desktop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p3lwv")
+expand_mode = 1
+
+[node name="Task_Bar" type="Control" parent="Desktop"]
+layout_mode = 1
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Desktop/Task_Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.65098, 0.741176, 1)
+
+[node name="LogOut_Button" type="Button" parent="Desktop/Task_Bar"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 0.400024
+offset_right = 53.0
+offset_bottom = 34.4
+icon = ExtResource("3_qs1g6")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Mail" type="CanvasLayer" parent="Desktop"]
+
+[node name="DoorControl" type="CanvasLayer" parent="Desktop"]
+
+[node name="Login" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mq53p")
+
+[node name="Background" type="TextureRect" parent="Login"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rcovy")
+expand_mode = 1
+
+[node name="LoginBG" type="ColorRect" parent="Login"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.545098)
+
+[node name="login_label" type="Label" parent="Login/LoginBG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = 27.075
+offset_right = 21.0003
+offset_bottom = 50.075
+grow_horizontal = 2
+text = "Login"
+
+[node name="user_text" type="Label" parent="Login/LoginBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -18.0
+offset_right = -36.0
+offset_bottom = -4.00003
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "username:"
+
+[node name="user_input" type="LineEdit" parent="Login/LoginBG"]
+layout_mode = 0
+offset_left = 221.4
+offset_top = 128.79
+offset_right = 352.4
+offset_bottom = 150.79
+theme_override_font_sizes/font_size = 10
+text = "user_admin"
+max_length = 10
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="pw_text" type="Label" parent="Login/LoginBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 27.0
+offset_right = -41.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "password:"
+
+[node name="pw_input" type="LineEdit" parent="Login/LoginBG"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 172.0
+offset_right = 352.0
+offset_bottom = 194.0
+theme_override_font_sizes/font_size = 10
+max_length = 10
+context_menu_enabled = false
+select_all_on_focus = true
+secret = true
+secret_character = "*"
+
+[node name="submit" type="Button" parent="Login/LoginBG"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.145
+offset_top = -84.86
+offset_right = 39.8547
+offset_bottom = -62.86
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Submit"
+
+[node name="leave" type="Button" parent="Login/LoginBG"]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 8.0
+offset_right = 495.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.717647, 0, 0, 1)
+shortcut = SubResource("Shortcut_54q1e")
+text = "X"
+
+[connection signal="button_down" from="Desktop/Task_Bar/LogOut_Button" to="." method="_on_log_out_button_button_down"]
+[connection signal="text_submitted" from="Login/LoginBG/pw_input" to="Login" method="_on_pw_input_text_submitted"]
+[connection signal="button_down" from="Login/LoginBG/submit" to="Login" method="_on_submit_button_down"]
+[connection signal="pressed" from="Login/LoginBG/leave" to="." method="_on_leave_pressed"]

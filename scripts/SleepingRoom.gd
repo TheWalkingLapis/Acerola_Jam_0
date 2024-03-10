@@ -12,9 +12,14 @@ var door_offset: float = 0.0
 var safe_door_closed: bool = true
 var safe_door_rotation: float = 0.0
 
+# Control/Environement/MoonBase/Interior/LivingRoom
+# Control/Audio_Manager
+@onready var audio_manager = $"../../../../Audio_Manager"
+
 func _ready():
 	door_button.attach_to_door(open_living_room_door)
 	safe_door_input.attach_to_door(open_safe_door)
+	safe_door_input.audio_func(audio_manager.play_button_press)
 
 func _process(delta):
 	if Input.is_action_just_pressed("TEST_open_close_doors"):

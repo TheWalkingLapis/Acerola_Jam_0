@@ -21,4 +21,4 @@ Levels:
 
 TODO:
 	Probs: Night Lamp(s), paper sheet (a.o. for lore), time stabilzer
-	Code: pod takeoff, inventory (or only have pickup mechanic?), menus, level timer, PC
+	Code: pod takeoff, menus, level timer, PC

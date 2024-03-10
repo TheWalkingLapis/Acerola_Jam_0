@@ -6,8 +6,8 @@ Info fürs Testen:
 	4. Das Spiel ist WIP, also wenn etwas unvollständig wirkt, dann weil es das im leider noch ist. Gerne trotzdem Feeback zu allem geben :)
 	5. Bei Interesse ist in der TODO.txt (auf Github) auch grob Story und Spielkonzept erklärt. 
 		Da stehen allerdings auch alle Levelkonzepte drinnen die ich mir ausdenke, also Spoiler Gefahr an alle die das fertige Spiel spielen wollen ^^
-	6. Feedback gerne per Discord or WhatsApp, wenn ihr keine Lust habt nen Roman zu schreiben (verständlicherweise) auch gerne einfach ne Sprachnachricht machen oder so
-	
+	6. Feedback gerne per Discord or WhatsApp, wenn ihr keine Lust habt nen Roman zu schreiben (verständlicherweise) auch gerne einfach ne Sprachnachricht machen oder so	
+
 Ziel des Spiels:
 	Das Spiel soll ein Puzzle-Game werden, im Testlevel müssen auch Rätseln gelöst werden.
 	Ziel ist es, mit dem Escape Pod zu entkommen. Falls das nicht reicht um zu wissen was zu tun ist, ist das auch schon wertvolles Feedback.

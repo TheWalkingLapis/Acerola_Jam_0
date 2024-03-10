@@ -1,71 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://tg04yfatjvg7"]
+[gd_scene load_steps=7 format=3 uid="uid://tg04yfatjvg7"]
 
 [ext_resource type="Script" path="res://scripts/control.gd" id="1_ghike"]
 [ext_resource type="PackedScene" uid="uid://cpbamg25vdbgp" path="res://scenes/environment.tscn" id="1_yy8ec"]
-[ext_resource type="PackedScene" uid="uid://cfn6u7vm35f1r" path="res://scenes/level_playtest.tscn" id="2_tpii3"]
+[ext_resource type="PackedScene" uid="uid://bwo53y2aeckss" path="res://scenes/moon_base.tscn" id="2_r0rcf"]
 [ext_resource type="PackedScene" uid="uid://drgruuvdcclum" path="res://scenes/main_menu.tscn" id="3_3t2nn"]
 [ext_resource type="PackedScene" uid="uid://bjvtxhrgqehf0" path="res://scenes/player.tscn" id="4_4nol8"]
+[ext_resource type="PackedScene" uid="uid://l71cudv40gxf" path="res://scenes/audio_manager.tscn" id="6_57by0"]
 
 [node name="Control" type="Node3D"]
 script = ExtResource("1_ghike")
-levels = Array[PackedScene]([ExtResource("2_tpii3")])
+levels = Array[PackedScene]([ExtResource("2_r0rcf")])
 player_scene = ExtResource("4_4nol8")
 enivornment_scene = ExtResource("1_yy8ec")
 
 [node name="Main_Menu" parent="." instance=ExtResource("3_3t2nn")]
 
-[node name="TEST_win" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.196078, 0.196078, 0.196078, 1)
-
-[node name="Label" type="Label" parent="TEST_win"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Thank you for testing. You won!
-
-(Press 'Enter' to go back to main menu)"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TEST_loose" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.196078, 0.196078, 0.196078, 1)
-
-[node name="Label" type="Label" parent="TEST_loose"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Thank you for testing. You died :(
-
-(Press 'Enter' to go back to main menu)"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Audio_Manager" parent="." instance=ExtResource("6_57by0")]

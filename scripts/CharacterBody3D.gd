@@ -10,27 +10,26 @@ extends CharacterBody3D
 @export var interaction_ray_length = 2.5
 var sneaking: bool = false
 var picked_up_item: RigidBody3D = null
+var has_keycard: bool = false
 var last_mouse_movement: Vector2
 var chaos_stage = 0.0
+var block_input = false
 
 func _ready():
 	pass
 
 func _process(delta):
+	if block_input:
+		return
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		
-	if Input.is_action_just_pressed("TEST_chaos"):
-		chaos_stage += 0.1
-		var chaos_mat: ShaderMaterial = load("res://chaos_mat.tres")
-		var children = get_all_children($"../MoonBase")
-		for c in children:
-			if "material_override" in c and randf() <= chaos_stage:
-				c.material_override = chaos_mat
 
 func _physics_process(delta):
+	if block_input:
+		return
+	
 	var movement_vec = Vector3(0,0,0)
 	if Input.is_action_pressed("move_forward"):
 		movement_vec += Vector3(0,0,-1)
@@ -86,6 +85,11 @@ func _physics_process(delta):
 			var result = space_state.intersect_ray(query)
 			if not result.is_empty():
 				if result["collider"] is RigidBody3D:
+					if result["collider"] == get_parent().get_keycard():
+						get_parent().picked_up_keycard()
+						has_keycard = true
+						$"Camera3D/Inventory_Slot/Card_Icon".visible = true
+						return
 					picked_up_item = result["collider"]
 					picked_up_item.gravity_scale = 0.0
 					picked_up_item.set_collision_layer_value(1, false)
@@ -162,7 +166,10 @@ func _physics_process(delta):
 					if area.is_in_group("Scanner_Buttons"):
 						var scanner = area.get_parent().get_parent()
 						if scanner.has_method("activate_area"):
-							scanner.activate_area(area)
+							var card_gone = scanner.activate_area(area, has_keycard)
+							if card_gone:
+								has_keycard = false
+								$"Camera3D/Inventory_Slot/Card_Icon".visible = false
 					if area.is_in_group("Buttons"):
 						var button = area.get_parent()
 						if button.has_method("activate_area"):
@@ -171,8 +178,17 @@ func _physics_process(delta):
 						var scanner = area.get_parent().get_parent()
 						if scanner.has_method("activate_area"):
 							scanner.activate_area(area)
+					if area.is_in_group("PC_Screen"):
+						# MoonBase/Interior/LivingRoom/Desk/Screen/Area
+						var living_room = area.get_parent().get_parent().get_parent()
+						if living_room.has_method("enter_pc_interaction"):
+							living_room.enter_pc_interaction()
+							block_input = true
+						
 # handle camera movement
 func _input(event):
+	if block_input:
+		return
 	# if mouse is not captured don't change camera
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		return
@@ -185,10 +201,6 @@ func _input(event):
 		cam.rotate(Vector3.RIGHT, -last_mouse_movement.y * camera_sensitivity_y)
 		# prevent upside-down camera movement
 		cam.rotation.x = clamp(cam.rotation.x, -0.45*PI, 0.45*PI)
-		
-func get_all_children(querry: Node) -> Array[Node]:
-	var res: Array[Node] = []
-	for c in querry.get_children():
-		res.append(c)
-		res.append_array(get_all_children(c))
-	return res
+
+func _unblock_input():
+	block_input = false

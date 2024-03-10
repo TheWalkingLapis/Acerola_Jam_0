@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjvtxhrgqehf0"]
+[gd_scene load_steps=7 format=3 uid="uid://bjvtxhrgqehf0"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody3D.gd" id="1_p4g2b"]
 [ext_resource type="Texture2D" uid="uid://bgttjqplbv0vs" path="res://textures/dot.png" id="2_ab0cp"]
+[ext_resource type="Texture2D" uid="uid://ibe8kkmbv7rk" path="res://textures/inventory_slot.png" id="3_67rdq"]
+[ext_resource type="Texture2D" uid="uid://dboimdgupvsj1" path="res://textures/car_icon.png" id="4_iw8hu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8gb15"]
 
@@ -42,3 +44,33 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ab0cp")
+
+[node name="Inventory_Slot" type="TextureRect" parent="Camera3D"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.95
+anchor_right = 0.05
+anchor_bottom = 0.95
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("3_67rdq")
+expand_mode = 1
+
+[node name="Card_Icon" type="TextureRect" parent="Camera3D/Inventory_Slot"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_iw8hu")
+expand_mode = 1
+stretch_mode = 5

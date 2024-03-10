@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://l71cudv40gxf"]
+
+[ext_resource type="AudioStream" uid="uid://7ttycjmseidw" path="res://sounds/music/OutInSpace.wav" id="1_0iv7w"]
+[ext_resource type="Script" path="res://scripts/audio_manager.gd" id="1_mrswm"]
+[ext_resource type="Script" path="res://scripts/AM_Buttons.gd" id="3_lwkg3"]
+[ext_resource type="AudioStream" uid="uid://d22lt4uweypgn" path="res://sounds/buttonPress.wav" id="4_w5x85"]
+
+[node name="Audio_Manager" type="Node"]
+script = ExtResource("1_mrswm")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Ingame_Music_Player" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("1_0iv7w")
+volume_db = -20.0
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="Buttons" type="Node" parent="Effects"]
+script = ExtResource("3_lwkg3")
+button_sound = ExtResource("4_w5x85")
+
+[node name="Button_Player_1" type="AudioStreamPlayer" parent="Effects/Buttons"]
+
+[node name="Button_Player_2" type="AudioStreamPlayer" parent="Effects/Buttons"]

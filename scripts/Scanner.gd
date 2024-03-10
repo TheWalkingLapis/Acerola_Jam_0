@@ -20,6 +20,7 @@ var dict: Dictionary
 
 var keycard_node: RigidBody3D
 var open_func: Callable
+var sound_func: Callable
 @export var card_mode: bool = false
 var opened: bool
 @export var password: Array[int] = [1,2,3,4]
@@ -46,33 +47,36 @@ func _process(delta):
 func set_keycard(card: RigidBody3D):
 	keycard_node = card
 
-func activate_area(area: Area3D):
+func activate_area(area: Area3D, has_keycard: bool) -> bool:
 	if not dict.has(area):
 		printerr("Error! Scanner has been called with a false Area3D!")
-		return
+		return false
 	if opened:
-		return
+		return false
 	
 	var value: int = dict[area]
 	
 	if card_mode:
-		if value == -3: # only accept inputs to card slot
-			if false: # TODO check if player has keycard
-				opened = true
-				display_label.text = "OPEN"
-				open_func.call(true)
-		return
+	# accept inputs to all buttons + cardslot
+		if has_keycard: # check if player has keycard
+			opened = true
+			display_label.text = "OPEN"
+			open_func.call(true)
+		return has_keycard
 	
-	if value == -3: # card
+	if value == -3: # card slot
 		pass
 	elif value == -2: # cancel
 		current_attempt = [-1, -1, -1, -1]
+		sound_func.call()
 	elif value == -1: #ok
 		if current_attempt == password:
 			opened = true
 			display_label.text = "OPEN"
 			open_func.call(true, false)
-			return
+			sound_func.call()
+			sound_func.call()
+			return true
 		current_attempt = [-1, -1, -1, -1]
 	else: # insert value
 		for i in range(4):
@@ -89,10 +93,14 @@ func activate_area(area: Area3D):
 			next_char = str(current_attempt[i])
 		text[i] = next_char
 	display_label.text = text
+	sound_func.call()
+	return false
 
 func attach_to_door(f: Callable):
 	open_func = f
 
+func audio_func(f: Callable):
+	sound_func = f
 
 func _on_card_slot_body_entered(body):
 	if opened:
