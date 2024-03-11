@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://d4clv2jrr73ap"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_4ctuc"]
+
+[resource]
+script = ExtResource("1_4ctuc")
+from = "me"
+to = "you"
+subject = "TEST ME"
+content = "This sucks
+But now less
+
+LG"

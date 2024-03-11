@@ -489,7 +489,6 @@ mesh = ExtResource("6_dvqqy")
 skeleton = NodePath("../../../../..")
 
 [node name="Pod_Door" type="CollisionShape3D" parent="Interior/PodRoom/Pod"]
-visible = false
 shape = SubResource("ConcavePolygonShape3D_2eb7u")
 
 [node name="PodDoor" type="MeshInstance3D" parent="Interior/PodRoom/Pod/Pod_Door"]

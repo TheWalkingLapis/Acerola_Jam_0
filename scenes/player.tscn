@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/CharacterBody3D.gd" id="1_p4g2b"]
 [ext_resource type="Texture2D" uid="uid://bgttjqplbv0vs" path="res://textures/dot.png" id="2_ab0cp"]
 [ext_resource type="Texture2D" uid="uid://ibe8kkmbv7rk" path="res://textures/inventory_slot.png" id="3_67rdq"]
-[ext_resource type="Texture2D" uid="uid://dboimdgupvsj1" path="res://textures/car_icon.png" id="4_iw8hu"]
+[ext_resource type="Texture2D" uid="uid://dboimdgupvsj1" path="res://textures/card_icon.png" id="4_vwj7h"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8gb15"]
 
@@ -71,6 +71,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_iw8hu")
+texture = ExtResource("4_vwj7h")
 expand_mode = 1
 stretch_mode = 5

@@ -1,11 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://bisfjpxie2vr6"]
+[gd_scene load_steps=25 format=3 uid="uid://bisfjpxie2vr6"]
 
 [ext_resource type="Texture2D" uid="uid://y7hs2qr5y057" path="res://textures/screensaver.png" id="1_rcovy"]
 [ext_resource type="Script" path="res://scripts/pc_interface.gd" id="1_slsvl"]
 [ext_resource type="Texture2D" uid="uid://b0pdditktn5qs" path="res://textures/wallpaper_xp.png" id="2_p3lwv"]
+[ext_resource type="Resource" uid="uid://d4clv2jrr73ap" path="res://mails/mail1.tres" id="2_uh30n"]
 [ext_resource type="Script" path="res://scripts/PC_Desktop.gd" id="2_ww8ro"]
+[ext_resource type="Resource" uid="uid://bah6nw7ku3gxd" path="res://mails/mail2.tres" id="3_knomv"]
 [ext_resource type="Texture2D" uid="uid://dcf0vsa2kdvr3" path="res://textures/power_on_off_symbol.png" id="3_qs1g6"]
 [ext_resource type="Script" path="res://scripts/PC_login.gd" id="4_mq53p"]
+[ext_resource type="Texture2D" uid="uid://ppcsqsi7lhy" path="res://textures/letter_icon.png" id="5_5pbor"]
+[ext_resource type="Script" path="res://scripts/Mail_Program.gd" id="7_yy6y8"]
+[ext_resource type="Texture2D" uid="uid://c1354h7e0nsyo" path="res://textures/lock_closed_icon.png" id="9_01u54"]
+[ext_resource type="Script" path="res://scripts/DoorControl.gd" id="9_3nifq"]
+[ext_resource type="Texture2D" uid="uid://wnfx10wolayf" path="res://textures/lock_opened_icon.png" id="10_vss4s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r1a8h"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdrk0"]
+bg_color = Color(0, 0, 0, 0.486275)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5cw5y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqe0k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pspgp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uyo7h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0o73v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3kgh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ka4c"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_pb12d"]
 device = -1
@@ -16,6 +44,7 @@ events = [SubResource("InputEventKey_pb12d")]
 
 [node name="PC_Interface" type="CanvasLayer"]
 script = ExtResource("1_slsvl")
+mails = Array[Resource]([ExtResource("2_uh30n"), ExtResource("3_knomv")])
 
 [node name="Desktop" type="Control" parent="."]
 layout_mode = 3
@@ -24,6 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_ww8ro")
 
 [node name="Wallpaper" type="TextureRect" parent="Desktop"]
@@ -33,6 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_p3lwv")
 expand_mode = 1
 
@@ -64,9 +95,432 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="Date" type="Label" parent="Desktop/Task_Bar"]
+layout_mode = 0
+offset_left = 1059.0
+offset_top = 5.40002
+offset_right = 1145.0
+offset_bottom = 28.4
+text = "11/10/2353"
+label_settings = SubResource("LabelSettings_r1a8h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mail_Button" type="Button" parent="Desktop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -541.0
+offset_top = -290.0
+offset_right = -441.0
+offset_bottom = -190.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("5_5pbor")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Desktop/Mail_Button"]
+layout_mode = 0
+offset_top = 105.0
+offset_right = 100.0
+offset_bottom = 128.0
+text = "Mail"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Mail" type="CanvasLayer" parent="Desktop"]
+script = ExtResource("7_yy6y8")
+
+[node name="Window" type="Control" parent="Desktop/Mail"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -203.0
+offset_right = 325.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top_Bar" type="Control" parent="Desktop/Mail/Window"]
+anchors_preset = 0
+offset_right = 650.0
+offset_bottom = 20.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Desktop/Mail/Window/Top_Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0666667, 0.109804, 0.34902, 1)
+
+[node name="Mail_Close" type="Button" parent="Desktop/Mail/Window/Top_Bar"]
+layout_mode = 0
+offset_left = 621.0
+offset_top = -1.0
+offset_right = 651.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 13
+text = "X"
+flat = true
+
+[node name="Label" type="Label" parent="Desktop/Mail/Window/Top_Bar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 48.0
+offset_bottom = 21.0
+text = "Mail"
+
+[node name="Border" type="ColorRect" parent="Desktop/Mail/Window"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -380.0
+offset_right = 325.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="Desktop/Mail/Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 25.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.964706, 0.572549, 1)
+
+[node name="List" type="Control" parent="Desktop/Mail/Window"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 25.0
+offset_right = 184.0
+offset_bottom = 395.0
+
+[node name="ItemList" type="ItemList" parent="Desktop/Mail/Window/List"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdrk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5cw5y")
+allow_search = false
+
+[node name="Divider" type="ColorRect" parent="Desktop/Mail/Window"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 25.0
+offset_right = 189.0
+offset_bottom = 395.0
+color = Color(0, 0, 0, 1)
+
+[node name="Text" type="Control" parent="Desktop/Mail/Window"]
+anchors_preset = 0
+offset_left = 189.0
+offset_top = 25.0
+offset_right = 645.0
+offset_bottom = 395.0
+
+[node name="From" type="LineEdit" parent="Desktop/Mail/Window/Text"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 341.0
+offset_bottom = 25.0
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xqe0k")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_pspgp")
+editable = false
+expand_to_text_length = true
+context_menu_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="div1" type="ColorRect" parent="Desktop/Mail/Window/Text"]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 456.0
+offset_bottom = 28.0
+color = Color(0, 0, 0, 1)
+
+[node name="To" type="LineEdit" parent="Desktop/Mail/Window/Text"]
+offset_left = 5.0
+offset_top = 29.0
+offset_right = 312.0
+offset_bottom = 54.0
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uyo7h")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_pspgp")
+editable = false
+expand_to_text_length = true
+context_menu_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="div2" type="ColorRect" parent="Desktop/Mail/Window/Text"]
+offset_top = 55.0
+offset_right = 456.0
+offset_bottom = 57.0
+color = Color(0, 0, 0, 1)
+
+[node name="Subject" type="LineEdit" parent="Desktop/Mail/Window/Text"]
+offset_left = 5.0
+offset_top = 59.0
+offset_right = 312.0
+offset_bottom = 84.0
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uyo7h")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_pspgp")
+editable = false
+expand_to_text_length = true
+context_menu_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="div3" type="ColorRect" parent="Desktop/Mail/Window/Text"]
+offset_top = 85.0
+offset_right = 456.0
+offset_bottom = 89.0
+color = Color(0, 0, 0, 1)
+
+[node name="Content" type="TextEdit" parent="Desktop/Mail/Window/Text"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 93.0
+offset_right = 450.0
+offset_bottom = 364.0
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0o73v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o3kgh")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_5ka4c")
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
 
 [node name="DoorControl" type="CanvasLayer" parent="Desktop"]
+script = ExtResource("9_3nifq")
+icon_open = ExtResource("10_vss4s")
+icon_closed = ExtResource("9_01u54")
+
+[node name="Window" type="Control" parent="Desktop/DoorControl"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -203.0
+offset_right = 325.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Top_Bar" type="Control" parent="Desktop/DoorControl/Window"]
+anchors_preset = 0
+offset_right = 650.0
+offset_bottom = 20.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Desktop/DoorControl/Window/Top_Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0666667, 0.109804, 0.34902, 1)
+
+[node name="Control_Close" type="Button" parent="Desktop/DoorControl/Window/Top_Bar"]
+layout_mode = 0
+offset_left = 621.0
+offset_top = -1.0
+offset_right = 651.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 13
+text = "X"
+flat = true
+
+[node name="Label" type="Label" parent="Desktop/DoorControl/Window/Top_Bar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -2.0
+offset_right = 48.0
+offset_bottom = 21.0
+text = "Control"
+
+[node name="Border" type="ColorRect" parent="Desktop/DoorControl/Window"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -380.0
+offset_right = 325.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="Desktop/DoorControl/Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 25.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.517647, 0.517647, 0.517647, 1)
+
+[node name="Buttons" type="Control" parent="Desktop/DoorControl/Window"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 25.0
+offset_right = 645.0
+offset_bottom = 395.0
+
+[node name="SleepingRoomDoor" type="Control" parent="Desktop/DoorControl/Window/Buttons"]
+anchors_preset = 0
+offset_left = 65.0
+offset_top = 50.0
+offset_right = 404.0
+offset_bottom = 114.0
+
+[node name="Sleeping_Room_Button" type="Button" parent="Desktop/DoorControl/Window/Buttons/SleepingRoomDoor"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+icon = ExtResource("10_vss4s")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Name" type="Label" parent="Desktop/DoorControl/Window/Buttons/SleepingRoomDoor"]
+layout_mode = 0
+offset_left = 86.0
+offset_right = 210.0
+offset_bottom = 23.0
+text = "Bedroom - Door"
+
+[node name="Status" type="Label" parent="Desktop/DoorControl/Window/Buttons/SleepingRoomDoor"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 32.0
+offset_right = 197.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "STATUS_OPEN"
+
+[node name="PodRoomDoor" type="Control" parent="Desktop/DoorControl/Window/Buttons"]
+anchors_preset = 0
+offset_left = 66.0
+offset_top = 143.0
+offset_right = 450.0
+offset_bottom = 207.0
+
+[node name="Pod_Room_Button" type="Button" parent="Desktop/DoorControl/Window/Buttons/PodRoomDoor"]
+offset_right = 64.0
+offset_bottom = 64.0
+icon = ExtResource("9_01u54")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Name" type="Label" parent="Desktop/DoorControl/Window/Buttons/PodRoomDoor"]
+offset_left = 86.0
+offset_right = 210.0
+offset_bottom = 23.0
+text = "Podroom - Door"
+
+[node name="Status" type="Label" parent="Desktop/DoorControl/Window/Buttons/PodRoomDoor"]
+offset_left = 88.0
+offset_top = 32.0
+offset_right = 197.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "STATUS_CLOSED"
+
+[node name="PodDoor" type="Control" parent="Desktop/DoorControl/Window/Buttons"]
+anchors_preset = 0
+offset_left = 66.0
+offset_top = 234.0
+offset_right = 433.0
+offset_bottom = 298.0
+
+[node name="Pod_Door_Button" type="Button" parent="Desktop/DoorControl/Window/Buttons/PodDoor"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+icon = ExtResource("9_01u54")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Name" type="Label" parent="Desktop/DoorControl/Window/Buttons/PodDoor"]
+offset_left = 86.0
+offset_right = 210.0
+offset_bottom = 23.0
+text = "Podroom - Pod"
+
+[node name="Status" type="Label" parent="Desktop/DoorControl/Window/Buttons/PodDoor"]
+offset_left = 88.0
+offset_top = 32.0
+offset_right = 197.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "STATUS_CLOSED"
+
+[node name="DoorControl_Button" type="Button" parent="Desktop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -541.0
+offset_top = -125.055
+offset_right = -441.0
+offset_bottom = -25.055
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("9_01u54")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Desktop/DoorControl_Button"]
+layout_mode = 0
+offset_top = 105.0
+offset_right = 100.0
+offset_bottom = 128.0
+text = "Control"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Login" type="Control" parent="."]
 visible = false
@@ -200,6 +654,14 @@ shortcut = SubResource("Shortcut_54q1e")
 text = "X"
 
 [connection signal="button_down" from="Desktop/Task_Bar/LogOut_Button" to="." method="_on_log_out_button_button_down"]
+[connection signal="pressed" from="Desktop/Mail_Button" to="Desktop" method="_on_mail_button_pressed"]
+[connection signal="pressed" from="Desktop/Mail/Window/Top_Bar/Mail_Close" to="Desktop" method="_on_mail_close_pressed"]
+[connection signal="item_selected" from="Desktop/Mail/Window/List/ItemList" to="Desktop/Mail" method="_on_item_list_item_selected"]
+[connection signal="pressed" from="Desktop/DoorControl/Window/Top_Bar/Control_Close" to="Desktop" method="_on_control_close_pressed"]
+[connection signal="pressed" from="Desktop/DoorControl/Window/Buttons/SleepingRoomDoor/Sleeping_Room_Button" to="Desktop/DoorControl" method="_on_sleeping_room_button_pressed"]
+[connection signal="pressed" from="Desktop/DoorControl/Window/Buttons/PodRoomDoor/Pod_Room_Button" to="Desktop/DoorControl" method="_on_pod_room_button_pressed"]
+[connection signal="pressed" from="Desktop/DoorControl/Window/Buttons/PodDoor/Pod_Door_Button" to="Desktop/DoorControl" method="_on_pod_door_button_pressed"]
+[connection signal="pressed" from="Desktop/DoorControl_Button" to="Desktop" method="_on_door_control_button_pressed"]
 [connection signal="text_submitted" from="Login/LoginBG/pw_input" to="Login" method="_on_pw_input_text_submitted"]
 [connection signal="button_down" from="Login/LoginBG/submit" to="Login" method="_on_submit_button_down"]
 [connection signal="pressed" from="Login/LoginBG/leave" to="." method="_on_leave_pressed"]
