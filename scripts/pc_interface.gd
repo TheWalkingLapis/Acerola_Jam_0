@@ -4,14 +4,19 @@ extends CanvasLayer
 @onready var desktop_screen: Control = $Desktop
 
 @export var mails: Array[Resource]
+@export var pc_active: bool = true
+@export var pc_password: String = ""
 
 func _ready():
 	login_screen.visible = true
+	login_screen.set_password(pc_password)
 
 func _process(delta):
 	pass
 
 func log_in():
+	if !pc_active:
+		return
 	login_screen.visible = false
 	login_screen.reset()
 

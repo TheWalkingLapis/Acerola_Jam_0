@@ -6,7 +6,7 @@ extends Node3D
 @onready var pod_room_wall_node = $"Interior/PodRoom/PodRoomWalls"
 @onready var tube_and_wall_mesh_instance = $"Outer_Wall/Tube_and_Wall/MeshInstance3D"
 
-@onready var example_mat: StandardMaterial3D = preload("res://materials/color_mats/lime.tres")
+@export var wall_mat: Material
 
 var interiror_walls: Array[MeshInstance3D]
 
@@ -21,9 +21,9 @@ func _ready():
 		all_walls.append(w.get_child(0))
 		
 	for c in all_walls:
-		c.mesh.material = example_mat
+		c.mesh.material = wall_mat
 	# special treatment for tube wall
-	tube_and_wall_mesh_instance.set_surface_override_material(1, example_mat)
+	tube_and_wall_mesh_instance.set_surface_override_material(1, wall_mat)
 	
 	$PC_Interface.visible = false
 
@@ -41,5 +41,5 @@ func get_all_children(querry: Node) -> Array[Node]:
 	return res
 
 # signal emited by pod
-func pod_reached():
-	get_parent().get_parent().pod_reached()
+func pod_escaped():
+	get_parent().get_parent().pod_escaped()

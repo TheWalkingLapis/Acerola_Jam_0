@@ -20,5 +20,5 @@ Levels:
 	(... ?)
 
 TODO:
-	Probs: Night Lamp(s), paper sheet (a.o. for lore), time stabilzer
-	Code: pod takeoff, menus, level timer
+	Probs: time stabilzer, actually design levels
+	Code: menus, level timer?, screen shake pod takeoff, level transition

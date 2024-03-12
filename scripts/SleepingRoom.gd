@@ -35,6 +35,8 @@ func _process(delta):
 		elif door.position.y >= 7.5:
 			door.position.y = 7.5
 			door_offset = 0.0
+	else:
+		audio_manager.stop_sleeping_room_door_moving()
 			
 	if safe_door_rotation != 0.0:
 		safe_door.rotate_y(safe_door_rotation * delta)
@@ -53,6 +55,7 @@ func open_living_room_door(opening: bool, swap_open_status: bool = false):
 	door_offset = 1.0 if door_closed else -1.0
 	door_offset *= door_opening_speed
 	door_closed = not door_closed
+	audio_manager.start_sleeping_room_door_moving()
 
 func open_safe_door(opening: bool, swap_open_status: bool = false):
 	if not swap_open_status:

@@ -41,41 +41,72 @@ func reload_current_level():
 func load_next_level():
 	# no more levels (trigger win here?)
 	if current_level_idx >= levels.size():
-		printerr("No more levels to be loaded!")
+		print("Won, TODO")
 		return
+	
 	# load first level
 	if current_level_idx == -1:
+		# instantiate environement and player
+		var environment = enivornment_scene.instantiate()
+		environment.process_mode = Node.PROCESS_MODE_PAUSABLE
+		add_child(environment)
+		var player = player_scene.instantiate()
+		player.process_mode = Node.PROCESS_MODE_PAUSABLE
+		add_child(player)
+		
 		current_level_idx += 1
 		current_level = levels[0].instantiate()
 		$Environment.add_child(current_level)
 		current_level.position.y += 0.7
+		
+		$Player.position = current_level.get_node("PlayerSpawn").position
+		$Player.rotation = current_level.get_node("PlayerSpawn").rotation
 		return
+		
 	# load next level
-	current_level.queue_free()
+	# instantiate environement and player
+	$Environment.queue_free()
+	await $Environment.tree_exited
+	var environment = enivornment_scene.instantiate()
+	environment.process_mode = Node.PROCESS_MODE_PAUSABLE
+	add_child(environment)
+	$Player.queue_free()
+	await $Player.tree_exited
+	var player = player_scene.instantiate()
+	player.process_mode = Node.PROCESS_MODE_PAUSABLE
+	add_child(player)
+	
+	# current_level freed when removing environment
 	current_level_idx += 1
 	current_level = levels[current_level_idx].instantiate()
 	$Environment.add_child(current_level)
 	current_level.position.y += 0.7
+	
+	$Player.position = current_level.get_node("PlayerSpawn").position
+	$Player.rotation = current_level.get_node("PlayerSpawn").rotation
 	
 func start_game():
 	in_main_menu = false
 	$Main_Menu.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	var enivornment = enivornment_scene.instantiate()
-	add_child(enivornment)
-	var player = player_scene.instantiate()
-	add_child(player)
-	
 	load_next_level()
-	$Player.position = current_level.get_node("PlayerSpawn").position
-	$Player.rotation = current_level.get_node("PlayerSpawn").rotation
 	
 	$Audio_Manager.start_ingame_music()
 
 # called by moon base
-func pod_reached():
-	pass
+func pod_escaped():
+	print("escaped")
+	$Player.get_node("Camera3D").get_node("negative").visible = true
+	$Audio_Manager.stop_ingame_music()
+	get_tree().paused = true
+	
+	# wait for x seconds
+	await get_tree().create_timer(4.0).timeout
+	load_next_level()
+	print("Next level!")
+	$Audio_Manager.start_ingame_music()
+	get_tree().paused = false
 
 var removed_keycard = false
 func get_keycard() -> RigidBody3D:

@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://l71cudv40gxf" path="res://scenes/audio_manager.tscn" id="6_57by0"]
 
 [node name="Control" type="Node3D"]
-process_mode = 3
 script = ExtResource("1_ghike")
 levels = Array[PackedScene]([ExtResource("2_at6fw")])
 player_scene = ExtResource("4_4nol8")
