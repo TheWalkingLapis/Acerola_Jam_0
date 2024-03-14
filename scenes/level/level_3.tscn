@@ -1728,15 +1728,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_ga7nv")
 
 [node name="PC_Interface" parent="." instance=ExtResource("52_f4pj2")]
 visible = false
-mails = Array[Resource]([ExtResource("53_282px"), null])
-pc_password = "none"
-always_logged_in = true
-control_sleeping_room_door = false
-control_pod_room_door = false
-control_pod_door = false
-
-[node name="PC_Interface" parent="PC_Interface" instance=ExtResource("52_f4pj2")]
-visible = false
 mails = Array[Resource]([ExtResource("53_282px"), ExtResource("54_4jqre")])
 pc_password = "none"
 always_logged_in = true

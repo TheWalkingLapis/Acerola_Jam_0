@@ -21,11 +21,21 @@ func _ready():
 var shake_strength = .5
 var shake_now = 0.0
 var old_cam_pos = Vector3.ZERO
+var hud_hidden = false
 
 func _process(delta):
 	if shake_now > 0.0:
 		$Camera3D.position = old_cam_pos + shake_now * Vector3(randf_range(-1, 1), randf_range(-1, 1), 0)
-		
+	
+	if Input.is_action_just_pressed("Hide_HUD"):
+		if !hud_hidden:
+			$Camera3D/Crosshair.visible = false
+			$Camera3D/Inventory_Slot.visible = false
+		else:
+			$Camera3D/Crosshair.visible = true
+			$Camera3D/Inventory_Slot.visible = true
+		hud_hidden = !hud_hidden
+	
 	if block_input:
 		return
 

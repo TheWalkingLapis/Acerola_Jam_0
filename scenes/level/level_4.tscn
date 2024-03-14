@@ -1484,7 +1484,7 @@ surface_material_override/0 = ExtResource("45_rlbq7")
 
 [node name="Directional_Input" parent="Interior/SleepingRoom/Safe/Door" instance=ExtResource("47_j8fgc")]
 transform = Transform3D(4.47035e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, 4.47035e-08, 0.661324, 0, 0.0782261)
-password = "rolrd"
+password = "rulrd"
 
 [node name="Frame" type="MeshInstance3D" parent="Interior/SleepingRoom"]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.687528, 4.49242, -0.696924)
