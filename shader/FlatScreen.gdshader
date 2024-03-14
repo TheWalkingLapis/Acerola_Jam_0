@@ -5,7 +5,7 @@ void vertex() {
 }
 
 void fragment() {
-	ALBEDO = vec3(UV.x, 1.-UV.y, 0);
+	ALBEDO = vec3(UV.x, 1.-UV.y, 0.5);
 	
 }
 

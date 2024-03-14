@@ -22,11 +22,6 @@ func _ready():
 	safe_door_input.audio_func(audio_manager.play_button_press)
 
 func _process(delta):
-	if Input.is_action_just_pressed("TEST_open_close_doors"):
-		open_living_room_door(true, true)
-	if Input.is_action_just_pressed("TEST_open_close_pod"):
-		open_safe_door(true, true)
-	
 	if door_offset != 0.0:
 		door.translate(Vector3.UP * door_offset * delta)
 		if door.position.y <= 2.5:

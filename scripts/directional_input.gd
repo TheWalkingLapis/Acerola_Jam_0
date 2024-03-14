@@ -9,7 +9,7 @@ extends Node3D
 var open_func: Callable
 var sound_func: Callable
 var opened: bool
-@export var password: String = "uuu"
+@export var password: String = "aaa" #not inputable
 var current_attempt: String
 
 func _ready():

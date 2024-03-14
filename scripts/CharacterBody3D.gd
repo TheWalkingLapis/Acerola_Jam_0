@@ -18,13 +18,20 @@ var block_input = false
 func _ready():
 	pass
 
+var shake_strength = .5
+var shake_now = 0.0
+var old_cam_pos = Vector3.ZERO
+
 func _process(delta):
+	if shake_now > 0.0:
+		$Camera3D.position = old_cam_pos + shake_now * Vector3(randf_range(-1, 1), randf_range(-1, 1), 0)
+		
 	if block_input:
 		return
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func start_cam_shake():
+	shake_now = shake_strength
+	old_cam_pos = $Camera3D.position
 
 func _physics_process(delta):
 	if block_input:
@@ -85,6 +92,8 @@ func _physics_process(delta):
 			var result = space_state.intersect_ray(query)
 			if not result.is_empty():
 				if result["collider"] is RigidBody3D:
+					if result["collider"].freeze:
+						return
 					if result["collider"] == get_parent().get_keycard():
 						get_parent().picked_up_keycard()
 						has_keycard = true
@@ -184,6 +193,11 @@ func _physics_process(delta):
 						if living_room.has_method("enter_pc_interaction"):
 							living_room.enter_pc_interaction()
 							block_input = true
+					if area.is_in_group("Speaker"):
+						# MoonBase/Interior/LivingRoom/Desk/Speaker/Area
+						var living_room = area.get_parent().get_parent().get_parent()
+						if living_room.has_method("play_speaker"):
+							living_room.play_speaker()
 						
 # handle camera movement
 func _input(event):

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://co10evn624adf"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_5bhil"]
+
+[resource]
+script = ExtResource("1_5bhil")
+from = "Aleph Archives"
+to = "MailingList<archive>"
+subject = "PROJECT Aleph Origins"
+content = "Brilliant researchers came up with a theoretical way of reversing Entropy. This process would require immense amounts of energy to work as intended, but if done correctly would yield nearly infinite amounts of energy for millenia. Experiments have been deemed too dangerous to be performed nearby populated areas. The first breakthroughs of PROJECT Aleph were performed in remote areas, until one accident of catasrophical extend took place. Though lots of people fell victim to this tragedy, the black-box recordings could not have been ignored. Continuing PROJECT Aleph on planet Earth was no longer an option.
+
+If you are interested in the history of PROJECT Aleph, subscribe to our Newsletters!"

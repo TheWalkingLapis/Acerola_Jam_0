@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://l4dt8rxmiwgj"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_hc1qg"]
+
+[resource]
+script = ExtResource("1_hc1qg")
+from = "HR@noreply"
+to = "you"
+subject = "Re: Safety Worries"
+content = "--- this is an automated message, do not reply ---
+
+We take suggestions from our employees very serious, which is why we wanted to let you know that we will soon manually process your concerns about <Safety Worries> :D. Please do not open new tickets for this issue, we ask you to be patient.
+
+Best regards "

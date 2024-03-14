@@ -1,19 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://l71cudv40gxf"]
+[gd_scene load_steps=14 format=3 uid="uid://l71cudv40gxf"]
 
 [ext_resource type="AudioStream" uid="uid://7ttycjmseidw" path="res://sounds/music/OutInSpace.wav" id="1_0iv7w"]
 [ext_resource type="Script" path="res://scripts/audio_manager.gd" id="1_mrswm"]
+[ext_resource type="AudioStream" uid="uid://c2ffdru3x5pvu" path="res://sounds/intro_first.mp3" id="2_gl16y"]
+[ext_resource type="AudioStream" uid="uid://qxv24reh1wtm" path="res://sounds/intro_second.mp3" id="3_4jnn6"]
 [ext_resource type="Script" path="res://scripts/AM_Buttons.gd" id="3_lwkg3"]
+[ext_resource type="AudioStream" uid="uid://cfnee1n3pqj8l" path="res://sounds/intro_third.mp3" id="4_kyfat"]
 [ext_resource type="AudioStream" uid="uid://d22lt4uweypgn" path="res://sounds/buttonPress.wav" id="4_w5x85"]
+[ext_resource type="AudioStream" uid="uid://ditjpn4a3wh2p" path="res://sounds/intro_full.mp3" id="5_m5xav"]
 [ext_resource type="AudioStream" uid="uid://bcswy4svus32r" path="res://sounds/buzzing.mp3" id="5_mfwmg"]
+[ext_resource type="AudioStream" uid="uid://dqkqtomkcnfqb" path="res://sounds/morse.mp3" id="6_8ffoq"]
+[ext_resource type="AudioStream" uid="uid://5cfj54syywjk" path="res://sounds/detected_stabilizer.mp3" id="7_dpwxe"]
+[ext_resource type="AudioStream" uid="uid://p63xlmo1v20h" path="res://sounds/missing_stabilizer.mp3" id="8_a4rj6"]
+[ext_resource type="AudioStream" uid="uid://61wgrupoyawa" path="res://sounds/pod_enetered.mp3" id="9_nu2tt"]
 
 [node name="Audio_Manager" type="Node"]
+process_mode = 1
 script = ExtResource("1_mrswm")
+intros = Array[AudioStream]([ExtResource("2_gl16y"), ExtResource("3_4jnn6"), ExtResource("4_kyfat"), ExtResource("5_m5xav")])
 
 [node name="Music" type="Node" parent="."]
 
 [node name="Ingame_Music_Player" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
 stream = ExtResource("1_0iv7w")
-volume_db = -20.0
+bus = &"Music"
 
 [node name="Effects" type="Node" parent="."]
 
@@ -22,17 +33,42 @@ script = ExtResource("3_lwkg3")
 button_sound = ExtResource("4_w5x85")
 
 [node name="Button_Player_1" type="AudioStreamPlayer" parent="Effects/Buttons"]
+bus = &"Effects"
 
 [node name="Button_Player_2" type="AudioStreamPlayer" parent="Effects/Buttons"]
+bus = &"Effects"
 
 [node name="Sleeping_Room_Door_Moving_Player" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource("5_mfwmg")
-volume_db = -10.0
+bus = &"Effects"
 
 [node name="Pod_Room_Door_Moving_Player" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource("5_mfwmg")
-volume_db = -10.0
+bus = &"Effects"
 
 [node name="Pod_Door_Moving_Player" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource("5_mfwmg")
+bus = &"Effects"
+
+[node name="Morse_Player" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("6_8ffoq")
 volume_db = -10.0
+bus = &"Effects"
+
+[node name="Stabilizer_Found_Player" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("7_dpwxe")
+bus = &"Voice"
+
+[node name="Stabilizer_Missing_Player" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("8_a4rj6")
+bus = &"Voice"
+
+[node name="Pod_Entered_Player" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("9_nu2tt")
+bus = &"Voice"
+
+[node name="Intro_Player" type="AudioStreamPlayer" parent="Effects"]
+bus = &"Voice"
+
+[connection signal="finished" from="Effects/Stabilizer_Found_Player" to="." method="_on_stabilizer_found_player_finished"]
+[connection signal="finished" from="Effects/Pod_Entered_Player" to="." method="_on_pod_entered_player_finished"]

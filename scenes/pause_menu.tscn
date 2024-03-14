@@ -1,0 +1,244 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr4y7h8p2lr74"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_24dmq"]
+[ext_resource type="Texture2D" uid="uid://c0xacqyi4q7f3" path="res://textures/aleph_symbol.png" id="1_g84d6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qklel"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_4e0wg"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_jd6rr"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_agq2t"]
+font_size = 20
+
+[node name="Pause_Menu" type="CanvasLayer"]
+script = ExtResource("1_24dmq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00784314, 0.0588235, 0.0862745, 0.882353)
+
+[node name="Unpause" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 518.0
+offset_right = 797.0
+offset_bottom = 588.0
+text = "Resume"
+
+[node name="BackToMent" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 435.0
+offset_right = 265.0
+offset_bottom = 501.0
+text = "Main Menu"
+
+[node name="Restart" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 435.0
+offset_right = 1058.0
+offset_bottom = 501.0
+text = "Restart Level"
+
+[node name="Paused" type="Label" parent="Control"]
+top_level = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_top = 23.0
+offset_right = 196.0
+offset_bottom = 160.0
+grow_horizontal = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_qklel")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Control" parent="Control"]
+modulate = Color(1, 1, 1, 0.298039)
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.309
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -125.0
+offset_right = 150.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g84d6")
+expand_mode = 1
+
+[node name="title" type="Label" parent="Control/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -11.5
+offset_right = 57.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PROJECT Aleph"
+label_settings = SubResource("LabelSettings_4e0wg")
+
+[node name="Voice_Vol" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 366.0
+offset_right = 669.0
+offset_bottom = 396.0
+value = 70.0
+
+[node name="Label" type="Label" parent="Control/Voice_Vol"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = -4.0
+offset_right = 366.0
+offset_bottom = 30.0
+text = "Voice"
+label_settings = SubResource("LabelSettings_jd6rr")
+
+[node name="Val" type="Label" parent="Control/Voice_Vol"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 29.0
+text = "100
+"
+label_settings = SubResource("LabelSettings_agq2t")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Effect_Vol" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 325.0
+offset_right = 669.0
+offset_bottom = 355.0
+value = 50.0
+
+[node name="Label" type="Label" parent="Control/Effect_Vol"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = -4.0
+offset_right = 366.0
+offset_bottom = 30.0
+text = "Effects"
+label_settings = SubResource("LabelSettings_jd6rr")
+
+[node name="Val" type="Label" parent="Control/Effect_Vol"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 29.0
+text = "100
+"
+label_settings = SubResource("LabelSettings_agq2t")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Music_Vol" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 284.0
+offset_right = 668.0
+offset_bottom = 314.0
+value = 15.0
+
+[node name="Label" type="Label" parent="Control/Music_Vol"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = -4.0
+offset_right = 366.0
+offset_bottom = 30.0
+text = "Music"
+label_settings = SubResource("LabelSettings_jd6rr")
+
+[node name="Val" type="Label" parent="Control/Music_Vol"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 29.0
+text = "100
+"
+label_settings = SubResource("LabelSettings_agq2t")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Master_Vol" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 425.0
+offset_right = 670.0
+offset_bottom = 455.0
+value = 70.0
+
+[node name="Label" type="Label" parent="Control/Master_Vol"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = -4.0
+offset_right = 366.0
+offset_bottom = 30.0
+text = "Master"
+label_settings = SubResource("LabelSettings_jd6rr")
+
+[node name="Val" type="Label" parent="Control/Master_Vol"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 29.0
+text = "100
+"
+label_settings = SubResource("LabelSettings_agq2t")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="Control/BackToMent" to="." method="_on_back_to_ment_pressed"]
+[connection signal="pressed" from="Control/Restart" to="." method="_on_restart_pressed"]
+[connection signal="value_changed" from="Control/Voice_Vol" to="." method="_on_voice_vol_value_changed"]
+[connection signal="value_changed" from="Control/Effect_Vol" to="." method="_on_effect_vol_value_changed"]
+[connection signal="value_changed" from="Control/Music_Vol" to="." method="_on_music_vol_value_changed"]
+[connection signal="value_changed" from="Control/Master_Vol" to="." method="_on_master_vol_value_changed"]

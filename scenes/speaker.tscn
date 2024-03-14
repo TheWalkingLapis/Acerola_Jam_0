@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dif6fsb1bs5l4"]
+
+[ext_resource type="ArrayMesh" uid="uid://ch4qet0krgdi7" path="res://base/speaker.obj" id="1_56yjp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2ilvs"]
+points = PackedVector3Array(-0.692352, -1.32095, -0.888074, 0.8, 1.43511, 0.964411, 0.8, 1.43511, -0.964411, -0.777291, 1.26612, 0.881703, -0.692352, -1.32095, 0.888074, 0.8, -1.43513, -0.964411, -0.777291, 1.26612, -0.881703, 0.8, -1.43513, 0.964411, -0.777291, -1.26642, -0.881703, 0.537845, 1.45882, 0.980338, 0.585185, -1.4644, -0.983889, -0.777291, -1.26642, 0.881703, 0.127566, 1.42435, -0.941707, 0.585185, -1.4644, 0.983889, 0.98133, -0.584154, -0.202263, 0.892242, 0.944927, -0.0674441, -0.692352, 1.32093, 0.888074, 0.537845, 1.45882, -0.980338, 0.985286, -0.767251, 0.0222372, -0.692352, 1.32093, -0.888074, 0.127566, 1.42435, 0.941707, 0.98134, -0.58416, 0.202265, 0.892234, 0.944917, 0.0674434, 0.977252, -0.402342, 0.0670445, 0.93736, -0.945056, 0.157262, 0.985295, -0.767258, -0.0222374, 0.88744, 0.894328, 0.201287, 0.887438, 0.894325, -0.201286, 0.977237, -0.402335, -0.0670434)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6msy"]
+albedo_color = Color(0.286275, 0.286275, 0.286275, 1)
+metallic = 0.8
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jspq1"]
+albedo_color = Color(0.113725, 0.113725, 0.113725, 1)
+metallic = 0.4
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u53j8"]
+size = Vector3(1.7915, 3.05127, 2.07507)
+
+[node name="Speaker" type="StaticBody3D"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_2ilvs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D2"]
+mesh = ExtResource("1_56yjp")
+skeleton = NodePath("../..")
+surface_material_override/1 = SubResource("StandardMaterial3D_k6msy")
+surface_material_override/2 = SubResource("StandardMaterial3D_jspq1")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Speaker"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0539551, 0.0220337, -0.003479)
+shape = SubResource("BoxShape3D_u53j8")

@@ -1,19 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://tg04yfatjvg7"]
+[gd_scene load_steps=12 format=3 uid="uid://tg04yfatjvg7"]
 
 [ext_resource type="Script" path="res://scripts/control.gd" id="1_ghike"]
 [ext_resource type="PackedScene" uid="uid://cpbamg25vdbgp" path="res://scenes/environment.tscn" id="1_yy8ec"]
 [ext_resource type="PackedScene" uid="uid://qlc5sn7sd1mm" path="res://scenes/level/level_1.tscn" id="2_at6fw"]
+[ext_resource type="PackedScene" uid="uid://bngam2lbi4okg" path="res://scenes/level/level_4.tscn" id="2_nahja"]
 [ext_resource type="PackedScene" uid="uid://drgruuvdcclum" path="res://scenes/main_menu.tscn" id="3_3t2nn"]
+[ext_resource type="PackedScene" uid="uid://d3x7iobddcr4m" path="res://scenes/level/level_2.tscn" id="3_74ayu"]
 [ext_resource type="PackedScene" uid="uid://bjvtxhrgqehf0" path="res://scenes/player.tscn" id="4_4nol8"]
+[ext_resource type="PackedScene" uid="uid://w60k8clm7wq5" path="res://scenes/level/level_3.tscn" id="4_h1nh4"]
 [ext_resource type="PackedScene" uid="uid://l71cudv40gxf" path="res://scenes/audio_manager.tscn" id="6_57by0"]
+[ext_resource type="PackedScene" uid="uid://dr4y7h8p2lr74" path="res://scenes/pause_menu.tscn" id="10_gjo7w"]
+[ext_resource type="PackedScene" uid="uid://c2i4a1iotluis" path="res://scenes/win.tscn" id="11_v4l4f"]
 
 [node name="Control" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_ghike")
-levels = Array[PackedScene]([ExtResource("2_at6fw")])
+levels = Array[PackedScene]([ExtResource("2_at6fw"), ExtResource("3_74ayu"), ExtResource("4_h1nh4"), ExtResource("2_nahja")])
 player_scene = ExtResource("4_4nol8")
 enivornment_scene = ExtResource("1_yy8ec")
 
+[node name="Audio_Manager" parent="." instance=ExtResource("6_57by0")]
+
 [node name="Main_Menu" parent="." instance=ExtResource("3_3t2nn")]
 
-[node name="Audio_Manager" parent="." instance=ExtResource("6_57by0")]
+[node name="Pause_Menu" parent="." instance=ExtResource("10_gjo7w")]
+visible = false
+
+[node name="Win" parent="." instance=ExtResource("11_v4l4f")]
+visible = false

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://drj0ofjgg60bg"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_xhhp5"]
+
+[resource]
+script = ExtResource("1_xhhp5")
+from = "Measurment Unit 548"
+to = "MailingList<researcher>"
+subject = "Energy Readings Report #94215"
+content = "Average Energy Readings:
+	NORMAL
+
+Average Surface Conditions:
+	NORMAL
+
+Equipment Condition:
+	NORMAL
+
+WARNING: Abnormal Energy Peaks since ~+e41 hours. i)===daw2*--+
+daf
+####
+$\")%U$
+
+This concludes Report #94215."

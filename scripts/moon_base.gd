@@ -7,6 +7,8 @@ extends Node3D
 @onready var tube_and_wall_mesh_instance = $"Outer_Wall/Tube_and_Wall/MeshInstance3D"
 
 @export var wall_mat: Material
+@export var last_level: bool = false
+@export var tesseract: RigidBody3D
 
 var interiror_walls: Array[MeshInstance3D]
 
@@ -40,6 +42,6 @@ func get_all_children(querry: Node) -> Array[Node]:
 		res.append_array(get_all_children(c))
 	return res
 
-# signal emited by pod
+# called by pod
 func pod_escaped():
 	get_parent().get_parent().pod_escaped()

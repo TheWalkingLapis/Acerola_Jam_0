@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://c1qdqudt2hnvo"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_d2enx"]
+
+[resource]
+script = ExtResource("1_d2enx")
+from = "Joe"
+to = "Everyone"
+subject = "Apology"
+content = "Hello guys,
+
+I need to seriously apologize for my past behaviour.
+As most of you are aware, I've been posting various jokes using the research network which is very inappropriate considering our working climate.
+
+Mr. Mirks from Human Ressources proposed that as an apology  I offer you all to suggon...
+
+
+
+
+
+
+TO.
+
+SUCK.
+
+ON.
+
+DEEZ.
+
+NUTS.
+
+HAHAHAHAHAH JOE STILL GOT IT !!!
+
+I DONT CARE WHAT HUMAN RESSOURCES HAS TO SAY
+
+HAHAHAH xDDDD
+
+(but guys like seriously its all in good fun, please dont report me to hr :( )"

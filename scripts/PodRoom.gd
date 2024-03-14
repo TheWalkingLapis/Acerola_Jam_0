@@ -29,17 +29,12 @@ func _process(delta):
 	if pod_launched:
 		var player = get_parent().get_parent().get_parent().get_parent().get_node("Player")
 		$Pod.position += delta * Vector3(0,3,0)
-		if !pod_warped and $Pod.position.y > 8.0:
+		if !pod_warped and $Pod.position.y > 7.0:
 			pod_warped = true
 			player.position.y += 15.0
 			$Pod.position.y += 15.0
-		if $Pod.position.y > 40.0:
+		if $Pod.position.y > 30.0:
 			get_parent().get_parent().pod_escaped()
-	
-	if Input.is_action_just_pressed("TEST_open_close_doors"):
-		open_living_room_door(true, true)
-	if Input.is_action_just_pressed("TEST_open_close_pod"):
-		open_pod_door(true, true)
 	
 	if door_offset != 0.0:
 		door.translate(Vector3.UP * door_offset * delta)
@@ -85,15 +80,35 @@ func open_pod_door(opening: bool, swap_open_status: bool = false):
 
 # called when player is contained in the pod
 func launch_pod():
+	if get_parent().get_parent().last_level:
+		await audio_manager.stablizer_found_done
+	else:
+		await audio_manager.pod_entered_done
+	# Control/Environment/MoonBase/Interior/PodRoom(/Pod/Area)
+	# Control/Player
+	var player = get_parent().get_parent().get_parent().get_parent().get_node("Player")
+	player.start_cam_shake()
 	pod_launched = true
 
 #only detects player
 func _on_entered_pod_body_entered(body):
-	$Pod/Entered_Pod/CollisionShape3D.set_deferred("disabled", true)
-	
 	# Control/Environment/MoonBase/Interior/PodRoom(/Pod/Area)
 	# Control/Player
 	var player = get_parent().get_parent().get_parent().get_parent().get_node("Player")
+	
+	# MoonBase/Interior/PodRoom
+	if get_parent().get_parent().last_level:
+		if player.picked_up_item != get_parent().get_parent().tesseract:
+			audio_manager.play_stabilizer_missing()
+			return
+		else:
+			player.picked_up_item.queue_free()
+			player.picked_up_item = null;
+			audio_manager.play_stablizer_found()
+	else:
+		audio_manager.play_pod_entered()
+	$Pod/Entered_Pod/CollisionShape3D.set_deferred("disabled", true)
+
 	player.set_collision_layer_value(2, false)
 	player.set_collision_layer_value(4, true)
 	player.set_collision_mask_value(1, false)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmyppdxt58v7l"]
+
+[ext_resource type="Script" path="res://scripts/Tesseract.gd" id="1_tuisv"]
+[ext_resource type="ArrayMesh" uid="uid://t7oqorb870wj" path="res://base/tesseract_case.obj" id="2_w1kkx"]
+[ext_resource type="ArrayMesh" uid="uid://ctgduc2eg8o7l" path="res://base/tesseract_inner.obj" id="3_8e3fq"]
+[ext_resource type="Shader" path="res://shader/tesseract.gdshader" id="4_n3gn0"]
+[ext_resource type="Texture2D" uid="uid://dhfurao83xymu" path="res://textures/stabilizer.png" id="5_ej4hf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4quid"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvqcl"]
+render_priority = 0
+shader = ExtResource("4_n3gn0")
+shader_parameter/tex = ExtResource("5_ej4hf")
+
+[node name="Tesseract" type="RigidBody3D"]
+script = ExtResource("1_tuisv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("BoxShape3D_4quid")
+
+[node name="Inner" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+mesh = ExtResource("3_8e3fq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_nvqcl")
+
+[node name="Outer" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = ExtResource("2_w1kkx")
+skeleton = NodePath("../..")

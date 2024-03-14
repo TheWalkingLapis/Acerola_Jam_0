@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://beq5gc3umre71"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_qclmq"]
+
+[resource]
+script = ExtResource("1_qclmq")
+from = "GermanGoethe"
+to = "MailingList<all>"
+subject = "Where should we go?"
+content = "From UP to DOWN,
+from LEFT to RIGHT.
+I cannot fathom,
+whats wrong or RIGHT.
+Where are we now?
+Where should we go?
+I'm DOWN to try,
+but I don't know."

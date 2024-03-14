@@ -22,6 +22,7 @@ var keycard_node: RigidBody3D
 var open_func: Callable
 var sound_func: Callable
 @export var card_mode: bool = false
+@export var activatable: bool = true
 var opened: bool
 @export var password: Array[int] = [1,2,3,4]
 var current_attempt: Array[int]
@@ -32,7 +33,10 @@ func _ready():
 	current_attempt = [-1, -1, -1, -1]
 	#areas = [area_1, area_2, area_3, area_4, area_5 , area_6, area_7, area_8, area_9, area_ok, area_0, area_cancel, area_card]
 	dict = {area_1: 1, area_2: 2, area_3: 3, area_4: 4, area_5: 5, area_6: 6, area_7: 7, area_7: 7, area_8: 8, area_9: 9, area_0: 0, area_ok: -1, area_cancel: -2, area_card: -3}
-	if card_mode:
+	if !activatable:
+		display_label.font_size = 50
+		display_label.text = "ERROR"
+	elif card_mode:
 		display_label.text = "CARD"
 		for key in dict.keys():
 			key.visible = false
@@ -51,7 +55,7 @@ func activate_area(area: Area3D, has_keycard: bool) -> bool:
 	if not dict.has(area):
 		printerr("Error! Scanner has been called with a false Area3D!")
 		return false
-	if opened:
+	if opened or !activatable:
 		return false
 	
 	var value: int = dict[area]
@@ -103,9 +107,9 @@ func audio_func(f: Callable):
 	sound_func = f
 
 func _on_card_slot_body_entered(body):
-	if opened:
+	if opened or !activatable:
 		return
-	if body == keycard_node:
+	if keycard_node != null and body == keycard_node:
 		opened = true
 		display_label.text = "OPEN"
 		open_func.call(true, false)

@@ -1,17 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjvtxhrgqehf0"]
+[gd_scene load_steps=12 format=3 uid="uid://bjvtxhrgqehf0"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody3D.gd" id="1_p4g2b"]
 [ext_resource type="Texture2D" uid="uid://bgttjqplbv0vs" path="res://textures/dot.png" id="2_ab0cp"]
 [ext_resource type="Texture2D" uid="uid://ibe8kkmbv7rk" path="res://textures/inventory_slot.png" id="3_67rdq"]
 [ext_resource type="Texture2D" uid="uid://dboimdgupvsj1" path="res://textures/card_icon.png" id="4_vwj7h"]
 [ext_resource type="Shader" path="res://shader/negative.gdshader" id="5_gtjty"]
+[ext_resource type="Script" path="res://scripts/negative.gd" id="6_6p5qm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8gb15"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lvcbw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_76tgw"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dwxws"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_llh6i"]
+noise = SubResource("FastNoiseLite_dwxws")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca0p6"]
 shader = ExtResource("5_gtjty")
+shader_parameter/time = null
+shader_parameter/noise = SubResource("NoiseTexture2D_llh6i")
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
@@ -20,6 +29,7 @@ script = ExtResource("1_p4g2b")
 movement_speed = 750.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_8gb15")
 
@@ -80,10 +90,12 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="negative" type="ColorRect" parent="Camera3D"]
+process_mode = 3
 visible = false
-material = SubResource("ShaderMaterial_76tgw")
+material = SubResource("ShaderMaterial_ca0p6")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_6p5qm")

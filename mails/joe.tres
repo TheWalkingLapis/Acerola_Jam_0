@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://borgm1i5rgj2f"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_n01m3"]
+
+[resource]
+script = ExtResource("1_n01m3")
+from = "Joe"
+to = "Joe Mama"
+subject = "HAHAHA"
+content = "HAHAHAHAAHAHAHAHAHAHAHA
+
+GOTCHA xD
+JOE MAMA HAHAHAHAHA
+OH MAN IM SO FUNNY
+
+YOU GUYS SHOULD SEE YOUR FACES RN xDDDD
+
+(pls dont tell the boss about this, its all in good fun. I'm already at my third warning this week :/)"

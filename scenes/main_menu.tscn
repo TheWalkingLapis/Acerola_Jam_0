@@ -83,4 +83,81 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Start"
 
+[node name="Quit" type="Button" parent="Main_Menu"]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 533.0
+offset_right = 1037.0
+offset_bottom = 582.0
+text = "Quit Game"
+
+[node name="Controls" type="Button" parent="Main_Menu"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 465.0
+offset_right = 237.0
+offset_bottom = 514.0
+text = "Controls"
+
+[node name="Credits" type="Button" parent="Main_Menu"]
+offset_left = 100.0
+offset_top = 534.0
+offset_right = 238.0
+offset_bottom = 583.0
+text = "Credits"
+
+[node name="Controls_txt" type="TextEdit" parent="Main_Menu"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 105.0
+offset_right = 400.0
+offset_bottom = 420.0
+theme_override_colors/font_readonly_color = Color(0.823529, 0.823529, 0.823529, 1)
+text = "							Controls:
+
+Move: 							W,A,S,D
+Jump: 								Space
+Sneak: 							Ctrl, Shift
+Interact/Grab: 				LMB
+Turn Object in Hand: 	E,Q,Mouse Wheel
+Fullscreen: 					F11
+Pause/Unpause: 			Esc"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="Credits_txt" type="TextEdit" parent="Main_Menu"]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 103.0
+offset_right = 1079.0
+offset_bottom = 418.0
+theme_override_colors/font_readonly_color = Color(0.772549, 0.772549, 0.772549, 1)
+text = "							Credits:
+
+Everything in this game was created during the Acerola Jam 0, the source code is available via github. The repo is linked on the itch.io page. The used tools are also listed there.
+
+Also huge thanks to my playtesters:
+Tetrixer and Chatus21, as well as my dad and my sister who also playtested :)
+
+Thanks you Acerola, for hosting the Jam!"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
 [connection signal="button_down" from="Main_Menu/Start_Button" to="Main_Menu" method="_on_start_button_button_down"]
+[connection signal="pressed" from="Main_Menu/Quit" to="Main_Menu" method="_on_quit_pressed"]
+[connection signal="pressed" from="Main_Menu/Controls" to="Main_Menu" method="_on_controls_pressed"]
+[connection signal="pressed" from="Main_Menu/Credits" to="Main_Menu" method="_on_credits_pressed"]

@@ -64,6 +64,7 @@ editor_only = true
 collision_mask = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Moon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 mesh = SubResource("CylinderMesh_d2kft")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("4_jqxst")

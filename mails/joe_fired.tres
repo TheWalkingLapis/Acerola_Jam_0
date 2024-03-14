@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://bcf0urh7uuina"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_jddfj"]
+
+[resource]
+script = ExtResource("1_jddfj")
+from = "Human Ressources"
+to = "MailingList<all>"
+subject = "Goodbye Joe"
+content = "We are sorry to inform you that 'Joe' has been let go as of Thursday. After a private talk we came to the conclusion that we can no longer work together.
+
+We wanted to use this opportunity to thank all of you for devoting yourselfs for this project and we hope you will continue doing so!"

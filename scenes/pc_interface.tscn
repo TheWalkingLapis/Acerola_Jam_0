@@ -1,11 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://bisfjpxie2vr6"]
+[gd_scene load_steps=26 format=3 uid="uid://bisfjpxie2vr6"]
 
 [ext_resource type="Texture2D" uid="uid://y7hs2qr5y057" path="res://textures/screensaver.png" id="1_rcovy"]
 [ext_resource type="Script" path="res://scripts/pc_interface.gd" id="1_slsvl"]
 [ext_resource type="Texture2D" uid="uid://b0pdditktn5qs" path="res://textures/wallpaper_xp.png" id="2_p3lwv"]
-[ext_resource type="Resource" uid="uid://d4clv2jrr73ap" path="res://mails/mail1.tres" id="2_uh30n"]
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="2_pjvtr"]
 [ext_resource type="Script" path="res://scripts/PC_Desktop.gd" id="2_ww8ro"]
-[ext_resource type="Resource" uid="uid://bah6nw7ku3gxd" path="res://mails/mail2.tres" id="3_knomv"]
 [ext_resource type="Texture2D" uid="uid://dcf0vsa2kdvr3" path="res://textures/power_on_off_symbol.png" id="3_qs1g6"]
 [ext_resource type="Script" path="res://scripts/PC_login.gd" id="4_mq53p"]
 [ext_resource type="Texture2D" uid="uid://ppcsqsi7lhy" path="res://textures/letter_icon.png" id="5_5pbor"]
@@ -13,6 +12,29 @@
 [ext_resource type="Texture2D" uid="uid://c1354h7e0nsyo" path="res://textures/lock_closed_icon.png" id="9_01u54"]
 [ext_resource type="Script" path="res://scripts/DoorControl.gd" id="9_3nifq"]
 [ext_resource type="Texture2D" uid="uid://wnfx10wolayf" path="res://textures/lock_opened_icon.png" id="10_vss4s"]
+
+[sub_resource type="Resource" id="Resource_gd1r8"]
+script = ExtResource("2_pjvtr")
+from = "me"
+to = "you"
+subject = "TEST ME"
+content = "This sucks
+But now less
+
+LG"
+
+[sub_resource type="Resource" id="Resource_42ju1"]
+script = ExtResource("2_pjvtr")
+from = "Fistus"
+to = "Der Herr"
+subject = "Der Ohren"
+content = "Moin,
+
+Sie verhöhnten ihn,
+	als Herren des SILOS, soos
+
+LG
+Maercel D'avis, Leiter für Kundenzufriedenheit bei 1&1"
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1a8h"]
 outline_size = 4
@@ -44,7 +66,7 @@ events = [SubResource("InputEventKey_pb12d")]
 
 [node name="PC_Interface" type="CanvasLayer"]
 script = ExtResource("1_slsvl")
-mails = Array[Resource]([ExtResource("2_uh30n"), ExtResource("3_knomv")])
+mails = Array[Resource]([SubResource("Resource_gd1r8"), SubResource("Resource_42ju1")])
 
 [node name="Desktop" type="Control" parent="."]
 layout_mode = 3
@@ -324,6 +346,7 @@ context_menu_enabled = false
 shortcut_keys_enabled = false
 drag_and_drop_selection_enabled = false
 middle_mouse_paste_enabled = false
+wrap_mode = 1
 
 [node name="DoorControl" type="CanvasLayer" parent="Desktop"]
 script = ExtResource("9_3nifq")

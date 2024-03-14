@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Mail" load_steps=2 format=3 uid="uid://cw14uj6l1xa3f"]
+
+[ext_resource type="Script" path="res://scripts/Mail.gd" id="1_qwehu"]
+
+[resource]
+script = ExtResource("1_qwehu")
+from = "HQ"
+to = "MailingList<aleph>"
+subject = "Know your Morse"
+content = "short: .
+long: -
+
+0 ..
+1 .-
+2 -.
+3 --
+4 ...
+5 ..-
+6 .-.
+7 .--
+8 -..
+9 -.-
+end of message ---"

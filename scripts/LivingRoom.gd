@@ -21,7 +21,7 @@ func _ready():
 	pod_room_scanner.audio_func(audio_manager.play_button_press)
 	# MoonBase/Interior/LivingRoom
 	# MoonBase/Keycard
-	pod_room_scanner.set_keycard(get_parent().get_parent().get_node("Keycard"))
+	pod_room_scanner.set_keycard(get_parent().get_parent().get_node_or_null("Keycard"))
 	
 	sleeping_room_button.attach_to_door(sleeping_room.open_living_room_door)
 	
@@ -38,4 +38,8 @@ func enter_pc_interaction():
 func leave_pc_interaction():
 	$"../../PC_Interface".visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	await get_tree().create_timer(0.1).timeout # stop instantly reentering pc
 	left_pc_interaction.emit()
+
+func play_speaker():
+	audio_manager.play_morse()
